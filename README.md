@@ -1,3 +1,1 @@
 # Chess-Variant-Simulator
-
-wrvibuwrouer
