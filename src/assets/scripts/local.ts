@@ -1,5 +1,5 @@
 
-import { Variant } from "../../shared/variant.mjs";
+import { Variant } from "../../shared/variant.js";
 
 const hyperChess: Variant = new Variant([]);
 

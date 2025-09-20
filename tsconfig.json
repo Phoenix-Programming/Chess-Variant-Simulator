@@ -6,6 +6,8 @@
         "alwaysStrict": true,
         "esModuleInterop": true,
         "rootDir": "src",
-        "outDir": "dist"
+        "outDir": "dist",
+        "module": "nodenext",
+        "moduleResolution": "nodenext"
     }
 }

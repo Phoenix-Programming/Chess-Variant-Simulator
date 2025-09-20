@@ -1,6 +1,6 @@
 
-import { Piece } from "./piece.mjs";
-import { Sq_Coord } from "../board/sq-coord.mjs";
+import { Piece } from "./piece.js";
+import { Sq_Coord } from "../board/sq-coord.js";
 
 export class Piece_Ref {
     constructor(

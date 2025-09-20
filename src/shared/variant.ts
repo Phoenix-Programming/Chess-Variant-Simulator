@@ -1,5 +1,5 @@
 
-import { Piece } from "./piece/piece.mjs";
+import { Piece } from "./piece/piece.js";
 
 export class Variant {
     constructor(

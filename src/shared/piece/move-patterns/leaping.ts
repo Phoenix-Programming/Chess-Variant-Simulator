@@ -1,8 +1,8 @@
 
-import { Board } from "../../board/board.mjs";
-import { Move_Pattern } from "../move-patterns.mjs";
-import { Move } from "../move.mjs";
-import { Piece_Ref } from "../piece-ref.mjs";
+import { Board } from "../../board/board.js";
+import { Move_Pattern } from "../move-patterns.js";
+import { Move } from "../move.js";
+import { Piece_Ref } from "../piece-ref.js";
 
 export class Leaping_Pattern extends Move_Pattern {
     constructor(){

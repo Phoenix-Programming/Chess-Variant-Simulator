@@ -1,7 +1,7 @@
 
-import { Square } from "./square.mjs";
-import { Move } from "../piece/move.mjs";
-import { Sq_Coord } from "./sq-coord.mjs";
+import { Square } from "./square.js";
+import { Move } from "../piece/move.js";
+import { Sq_Coord } from "./sq-coord.js";
 
 export class Board {
     // indexed like this: squares[rowIdx][colIdx]

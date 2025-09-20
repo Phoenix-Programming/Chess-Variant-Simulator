@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/server/index.mjs"
+    "build": "npx tsc",
+    "start": "node dist/server/index.js"
   },
   "type": "module",
   "devDependencies": {
