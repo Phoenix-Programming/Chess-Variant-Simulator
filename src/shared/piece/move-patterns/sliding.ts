@@ -9,7 +9,7 @@ export class Sliding_Pattern extends Move_Pattern {
         super();
     }
 
-    getMatches(board: Board, piece: Piece_Ref): Move[] {
+    public getMatches(board: Board, piece: Piece_Ref): Move[] {
         throw new Error("Unimplemented");
     }
 }
