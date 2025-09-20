@@ -2,6 +2,9 @@
 import path from "node:path";
 import express, { Request, Response } from "express";
 import { createServer } from "http";
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env", quiet: true });
 
 const app = express();
 
@@ -15,7 +18,8 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // Set up server
+const port = process.env.PORT;
 const httpServer = createServer(app);
 
-httpServer.listen(8000);
-console.log("Listening to port 8000");
+httpServer.listen(port);
+console.log(`Listening to port ${port}`);
