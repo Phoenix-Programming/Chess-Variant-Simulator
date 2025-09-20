@@ -5,7 +5,9 @@ import { Piece_Ref } from "./piece-ref.js";
 import { Move } from "./move.js";
 
 export class Piece {
-    private patterns: Move_Pattern[];
+    constructor(
+        private patterns: Move_Pattern[]
+    ){}
 
     public getMovesFrom(Board: Board, piece: Piece_Ref): Move[] {
         throw new Error("Unimplemented");
