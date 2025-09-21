@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "alwaysStrict": true,
+        "esModuleInterop": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "module": "nodenext",
+        "moduleResolution": "nodenext"
+    }
+}
