@@ -9,5 +9,9 @@
         "outDir": "dist",
         "module": "nodenext",
         "moduleResolution": "nodenext"
-    }
+    },
+    "exclude": [
+        "node_modules",
+        "**/*.(spec|test).ts"
+    ]
 }
