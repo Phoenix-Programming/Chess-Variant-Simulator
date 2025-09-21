@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "build": "npx tsc && npx sass src/assets/styles:dist/assets/styles",
+    "start": "node dist/server/index.js"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "sass": "^1.93.0"
+  }
+}
