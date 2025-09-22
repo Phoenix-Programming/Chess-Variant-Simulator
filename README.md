@@ -7,6 +7,22 @@
 3. Build the project with the `npm run build` command
 4. Run the project with the `npm run start` command
 
+## Tech Stack
+
+### Frontend
+
+- **HTML** – Markup language for structuring the UI
+- **SCSS (SASS)** – CSS preprocessor for modular and maintainable styles
+- **TypeScript** – Strongly typed JavaScript for safer, scalable code
+
+### Backend
+
+- **Node.js** – JavaScript runtime for server-side logic
+
+### Testing
+
+- **Vitest** – Fast unit testing framework for modern JavaScript and TypeScript projects
+
 ## Commands
 
 1. Delete the `dist/` directory with `npm run clean` command
