@@ -1,5 +1,4 @@
-
-import { Move_Pattern } from "./move-patterns.js";
+import { Move_Pattern } from "./move-patterns/move-patterns.js";
 import { Board } from "../board/board.js";
 import { Piece_Ref } from "./piece-ref.js";
 import { Move } from "./move.js";
