@@ -6,8 +6,8 @@
     "dev": "npm run build && npm run start",
     "test": "vitest run --coverage=false",
     "test:watch": "vitest --coverage=false",
-    "coverage": "npx vitest --coverage run",
-    "coverage:watch": "npx vitest --coverage"
+    "coverage": "rimraf coverage && npx vitest --coverage run",
+    "coverage:watch": "rimraf coverage && npx vitest --coverage"
   },
   "type": "module",
   "devDependencies": {
