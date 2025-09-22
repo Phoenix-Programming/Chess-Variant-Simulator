@@ -1,4 +1,3 @@
-
 import { Square } from "./square.js";
 import { Sq_Coord } from "./sq-coord.js";
 
@@ -13,7 +12,19 @@ export class Board {
     constructor(
         private width: number,
         private height: number
-    ){}
+    ) {}
+
+    public getWidth(): number {
+        return this.width;
+    }
+
+    public getHeight(): number {
+        return this.height;
+    }
+
+    public getTurn() {
+        return this.turn;
+    }
 
     public makeMove(move: Move): void {
         throw new Error("Unimplemented");
