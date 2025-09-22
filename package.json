@@ -4,8 +4,8 @@
     "build": "npm run clean && npx tsc && npx sass src/assets/styles:dist/assets/styles",
     "start": "node dist/server/index.js",
     "dev": "npm run build && npm run start",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "vitest run --coverage=false",
+    "test:watch": "vitest --coverage=false",
     "coverage": "npx vitest --coverage run",
     "coverage:watch": "npx vitest --coverage"
   },
