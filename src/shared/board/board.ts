@@ -1,8 +1,8 @@
-import { Square } from "./square.js";
-import { Sq_Coord } from "./sq-coord.js";
+import { Square } from "./square";
+import { type Sq_Coord } from "./sq-coord";
 
-import { Move } from "../piece/move.js";
-import { Color } from "../turn.js";
+import { type Move } from "../piece/move";
+import { Color } from "../turn";
 
 export class Board {
     // indexed like this: squares[rowIdx][colIdx]

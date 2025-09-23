@@ -1,9 +1,9 @@
-import { Board } from "../../board/board.js";
-import { Move_Pattern } from "./move-patterns.js";
-import { Move } from "../move.js";
-import { Piece_Ref } from "../piece-ref.js";
-import { Square } from "../../board/square.js";
-import { Sq_Coord } from "../../board/sq-coord.js";
+import { Board } from "../../board/board";
+import { Move_Pattern } from "./move-patterns";
+import { type Move } from "../move";
+import { Piece_Ref } from "../piece-ref";
+import { Square } from "../../board/square";
+import { type Sq_Coord } from "../../board/sq-coord";
 
 /**
  * This class defines an move offset pattern where a piece moves by a specified offset
