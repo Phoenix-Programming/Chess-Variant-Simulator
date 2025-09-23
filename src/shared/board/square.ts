@@ -1,7 +1,7 @@
-import { Piece_Ref } from "../piece/piece-ref";
+import { PieceRef } from "../piece/piece-ref";
 
 export class Square {
-    public pieceRef?: Piece_Ref;
+	public pieceRef?: PieceRef;
 
-    constructor() {}
+	constructor() {}
 }

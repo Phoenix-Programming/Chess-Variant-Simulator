@@ -1,14 +1,12 @@
-import { Move_Pattern } from "./move-patterns/move-patterns";
+import { MovePattern } from "./move-patterns/move-patterns";
 import { Board } from "../board/board";
-import { Piece_Ref } from "./piece-ref";
+import { PieceRef } from "./piece-ref";
 import { type Move } from "./move";
 
 export class Piece {
-    constructor(
-        private patterns: Move_Pattern[]
-    ) {}
+	constructor(private patterns: MovePattern[]) {}
 
-    public getMovesFrom(Board: Board, piece: Piece_Ref): Move[] {
-        throw new Error("Unimplemented");
-    }
+	public getMovesFrom(Board: Board, piece: PieceRef): Move[] {
+		throw new Error("Unimplemented");
+	}
 }
