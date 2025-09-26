@@ -1,0 +1,61 @@
+// For responsive design breakpoints
+@mixin respond($breakpoint) {
+	@if $breakpoint == sm {
+		@media (min-width: $breakpoint-sm) { @content; }
+	} @else if $breakpoint == md {
+		@media (min-width: $breakpoint-md) { @content; }
+	} @else if $breakpoint == lg {
+		@media (min-width: $breakpoint-lg) { @content; }
+	} @else if $breakpoint == xl {
+		@media (min-width: $breakpoint-xl) { @content; }
+	}
+}
+
+// Flexbox Mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+	flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+	@include flex(row, center, center);
+}
+
+@mixin flex-column-center {
+	@include flex(column, center, center);
+}
+
+@mixin flex-between {
+	@include flex(row, space-between, center);
+}
+
+@mixin flex-around {
+	@include flex(row, space-around, center);
+}
+
+@mixin flex-vertical-center {
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-horizontal-center {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin flex-gap($size) {
+	display: flex;
+	gap: $size;
+}
+
+// Clearfix to clear floats
+@mixin clearfix {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}

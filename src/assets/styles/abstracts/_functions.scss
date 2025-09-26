@@ -1,0 +1,15 @@
+@import "../abstracts/variables";
+
+// Convert pixels to rem units based on a base font size
+@function rem($px, $base: $font-size-base) {
+	@return ($px / $base) * 1rem;
+}
+
+// Determine a contrasting color (light or dark) based on the input color's lightness
+@function contrast-color($color, $dark: black, $light: white) {
+	@if (lightness($color) > 50) {
+		@return $dark;
+	} @else {
+		@return $light;
+	}
+}

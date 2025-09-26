@@ -1,0 +1,11 @@
+// Normalize CSS in order to have a consistent baseline across browsers
+@import "normalize.css/normalize.css";
+
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/globals";
+
+@import "themes/boards/defaultBoard";
+@import "themes/pieces/defaultPieces";
