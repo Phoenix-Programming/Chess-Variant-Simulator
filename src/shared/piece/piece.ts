@@ -1,14 +1,12 @@
-import { Move_Pattern } from "./move-patterns/move-patterns.js";
-import { Board } from "../board/board.js";
-import { Piece_Ref } from "./piece-ref.js";
-import { Move } from "./move.js";
+import { MovePattern } from "./move-patterns/move-patterns";
+import { Board } from "../board/board";
+import { PieceRef } from "./piece-ref";
+import { type Move } from "./move";
 
 export class Piece {
-    constructor(
-        private patterns: Move_Pattern[]
-    ){}
+	constructor(private patterns: MovePattern[]) {}
 
-    public getMovesFrom(board: Board, piece: Piece_Ref): Move[] {
+    public getMovesFrom(board: Board, piece: PieceRef): Move[] {
         // Uses a set to remove duplicates
         let total_moves: Set<Move> = new Set<Move>();
 

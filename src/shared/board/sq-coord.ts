@@ -1,5 +1,4 @@
-
-export interface Sq_Coord {
-    row: number,
-    column: number
+export interface SqrCoord {
+	row: number;
+	column: number;
 }
