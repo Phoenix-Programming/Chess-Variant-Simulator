@@ -6,7 +6,7 @@ import { type Move } from "./move";
 export class Piece {
 	constructor(private patterns: MovePattern[]) {}
 
-    public getMovesFrom(board: Board, piece: Piece_Ref): Move[] {
+    public getMovesFrom(board: Board, piece: PieceRef): Move[] {
         // Uses a set to remove duplicates
         let total_moves: Set<Move> = new Set<Move>();
 
