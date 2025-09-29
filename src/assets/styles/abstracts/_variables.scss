@@ -8,10 +8,17 @@ $neutral-color: #8b949e;
 $text-primary-color: #f9fafb;
 $text-secondary-color: #e5e7eb;
 $text-tertiary-color: #c2c8d0;
+$text-muted-color: #9ca3af;
 
 // Background Colors
 $background: #111827;
 $background-alt: #1f2937;
+
+// Form Input Colors
+$input-background-color: #374151;
+$input-border-color: #4b5563;
+$input-focus-border-color: $primary-color;
+$input-disabled-background-color: #1f2937;
 
 // Border Colors
 $border-primary-color: #4b5563;
