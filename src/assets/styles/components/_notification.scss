@@ -1,4 +1,5 @@
 @import "../abstracts/variables";
+@import "../abstracts/mixins";
 
 @mixin _notification-type($color) {
 	border-left: 4px solid $color;

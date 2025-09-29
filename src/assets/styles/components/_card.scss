@@ -1,4 +1,5 @@
 @import "../abstracts/variables";
+@import "../abstracts/mixins";
 
 @mixin _card-variant($color) {
 	border-color: $color;
