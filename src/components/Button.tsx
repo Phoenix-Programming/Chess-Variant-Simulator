@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_buttons.scss";
+import "../assets/styles/components/_button.scss";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 	styleType?: "solid" | "outline";

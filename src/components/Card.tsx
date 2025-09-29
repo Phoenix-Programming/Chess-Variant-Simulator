@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_cards.scss";
+import "../assets/styles/components/_card.scss";
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
 	compact?: boolean;

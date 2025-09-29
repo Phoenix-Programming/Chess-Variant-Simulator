@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_forms.scss";
+import "../assets/styles/components/_form.scss";
 
 type FormGroupProps = React.HTMLAttributes<HTMLDivElement> & {
 	label?: string;
