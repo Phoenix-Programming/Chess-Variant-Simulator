@@ -7,5 +7,24 @@
 
 @import "base/globals";
 
+@import "components/alert";
+@import "components/badge";
+@import "components/button";
+@import "components/card";
+@import "components/checkbox_&_radio";
+@import "components/chess";
+@import "components/divider";
+@import "components/dropdown";
+@import "components/form";
+@import "components/loading";
+@import "components/modal";
+@import "components/navigation";
+@import "components/notification";
+@import "components/progress";
+@import "components/toggle";
+@import "components/tooltip";
+
+@import "layouts/navbar";
+
 @import "themes/boards/defaultBoard";
 @import "themes/pieces/defaultPieces";

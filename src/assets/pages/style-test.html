@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Component Test Page - Chess Variant Simulator</title>
+		<link href="/styles/main.css" rel="stylesheet" type="text/css" />
+		<style>
+			/* Test-specific layout styles */
+			.demo-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin: 2rem 0;
+			}
+
+			.color-palette {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				gap: 1rem;
+				margin: 2rem 0;
+			}
+
+			.color-card {
+				padding: 2rem 1rem;
+				border-radius: 0.5rem;
+				text-align: center;
+				color: white;
+				font-weight: 600;
+			}
+
+			.primary {
+				background-color: #3b82f6;
+			}
+			.secondary {
+				background-color: #1e40af;
+			}
+			.accent {
+				background-color: #93c5fd;
+				color: #111827;
+			}
+			.neutral {
+				background-color: #8b949e;
+			}
+			.success {
+				background-color: #22c55e;
+			}
+			.danger {
+				background-color: #ef4444;
+			}
+			.warning {
+				background-color: #fbbf24;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 1rem;
+			}
+
+			.section {
+				margin: 3rem 0;
+				padding: 2rem 0;
+				border-bottom: 1px solid #374151;
+			}
+
+			.component-demo {
+				background-color: #1f2937;
+				padding: 2rem;
+				border-radius: 0.5rem;
+				margin: 1rem 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Navigation Demo -->
+			<nav class="navbar">
+				<div class="navbar-container">
+					<a href="#" class="navbar-brand">♔ Chess Variants</a>
+					<ul class="navbar-nav">
+						<li class="navbar-item">
+							<a href="#" class="navbar-link active">Home</a>
+						</li>
+						<li class="navbar-item">
+							<a href="#" class="navbar-link">Play</a>
+						</li>
+						<li class="navbar-item">
+							<a href="#" class="navbar-link">Learn</a>
+						</li>
+						<li class="navbar-item">
+							<a href="#" class="navbar-link">Settings</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<header class="section">
+				<h1>Chess Variant Simulator - Component Library</h1>
+				<p>Comprehensive showcase of all available components and styles.</p>
+			</header>
+
+			<!-- Buttons Section -->
+			<section class="section">
+				<h2>Button Components</h2>
+
+				<h3>Button Variants</h3>
+				<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0">
+					<button class="btn-primary">Primary</button>
+					<button class="btn-secondary">Secondary</button>
+					<button class="btn-success">Success</button>
+					<button class="btn-danger">Danger</button>
+					<button class="btn-warning">Warning</button>
+					<button class="btn-primary" disabled>Disabled</button>
+				</div>
+
+				<h3>Outline Buttons</h3>
+				<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0">
+					<button class="btn-outline-primary">Outline Primary</button>
+					<button class="btn-outline-secondary">Outline Secondary</button>
+					<button class="btn-outline-success">Outline Success</button>
+					<button class="btn-outline-danger">Outline Danger</button>
+					<button class="btn-outline-warning">Outline Warning</button>
+					<button class="btn-outline-primary" disabled>Outline Disabled</button>
+				</div>
+
+				<h3>Button Sizes & Shapes</h3>
+				<div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin: 1rem 0">
+					<button class="btn-primary btn-sm">Small</button>
+					<button class="btn-primary">Default</button>
+					<button class="btn-primary btn-lg">Large</button>
+					<button class="btn-primary btn-pill">Pill Shape</button>
+					<button class="btn-primary btn-icon">♔</button>
+				</div>
+
+				<button class="btn-primary btn-block">Block Button (Full Width)</button>
+			</section>
+
+			<!-- Cards Section -->
+			<section class="section">
+				<h2>Card Components</h2>
+				<div class="demo-grid">
+					<div class="card">
+						<div class="card-header">
+							<h3>Basic Card</h3>
+						</div>
+						<div class="card-body">
+							<p>This is a basic card with header and body content. Perfect for displaying game information.</p>
+						</div>
+						<div class="card-footer">
+							<button class="btn-primary btn-sm">Action</button>
+							<span>Footer info</span>
+						</div>
+					</div>
+
+					<div class="card card-primary">
+						<div class="card-header">
+							<h3>Primary Card</h3>
+						</div>
+						<div class="card-body">
+							<p>A card with primary styling, great for highlighting important content.</p>
+						</div>
+					</div>
+
+					<div class="card card-interactive">
+						<div class="card-body">
+							<h4>Interactive Card</h4>
+							<p>This card responds to hover and click events.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Forms Section -->
+			<section class="section">
+				<h2>Form Components</h2>
+				<div class="demo-grid">
+					<div class="card">
+						<div class="card-header">
+							<h3>Form Elements</h3>
+						</div>
+						<div class="card-body">
+							<form>
+								<div class="form-group">
+									<label class="form-label required" for="player-name">Player Name</label>
+									<input
+										type="text"
+										id="player-name"
+										class="form-control"
+										placeholder="Enter your name"
+										value="ChessMaster"
+									/>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" for="email-address">Email Address</label>
+									<input type="email" id="email-address" class="form-control" placeholder="player@example.com" />
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" for="game-variant">Game Variant</label>
+									<select id="game-variant" class="form-control">
+										<option value="">Select a variant...</option>
+										<option value="standard">Standard Chess</option>
+										<option value="kingofhill">King of the Hill</option>
+										<option value="threecheck">Three-Check</option>
+										<option value="atomic">Atomic Chess</option>
+										<option value="crazyhouse">Crazyhouse</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" for="time-control">Time Control</label>
+									<select id="time-control" class="form-control">
+										<option value="blitz">5+3 Blitz</option>
+										<option value="rapid">10+5 Rapid</option>
+										<option value="classical">30+0 Classical</option>
+										<option value="unlimited">Unlimited</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" for="game-notes">Game Notes</label>
+									<textarea
+										id="game-notes"
+										class="form-control"
+										rows="3"
+										placeholder="Add any notes about this game..."
+									></textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-header">
+							<h3>Checkboxes & Radio Buttons</h3>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label class="form-label">Game Preferences</label>
+
+								<div class="form-check">
+									<input type="checkbox" id="notifications" checked />
+									<label class="form-check-label" for="notifications">Enable move notifications</label>
+								</div>
+
+								<div class="form-check">
+									<input type="checkbox" id="sounds" />
+									<label class="form-check-label" for="sounds">Play move sounds</label>
+								</div>
+
+								<div class="form-check">
+									<input type="checkbox" id="analysis" checked />
+									<label class="form-check-label" for="analysis">Show move analysis</label>
+								</div>
+
+								<div class="form-check">
+									<input type="checkbox" id="highlights" />
+									<label class="form-check-label" for="highlights">Highlight possible moves</label>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label">Board Theme</label>
+
+								<div class="form-check">
+									<input type="radio" id="theme-classic" name="theme" value="classic" checked />
+									<label class="form-check-label" for="theme-classic">Classic Wood</label>
+								</div>
+
+								<div class="form-check">
+									<input type="radio" id="theme-modern" name="theme" value="modern" />
+									<label class="form-check-label" for="theme-modern">Modern Glass</label>
+								</div>
+
+								<div class="form-check">
+									<input type="radio" id="theme-marble" name="theme" value="marble" />
+									<label class="form-check-label" for="theme-marble">Marble Stone</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-header">
+							<h3>Toggle Switches & Validation</h3>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label class="form-label" for="autosave">Auto-save games</label>
+								<div class="form-switch">
+									<input type="checkbox" id="autosave" checked />
+									<span class="switch-slider" onclick="toggleSwitch('autosave')"></span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="darkmode">Dark mode</label>
+								<div class="form-switch">
+									<input type="checkbox" id="darkmode" />
+									<span class="switch-slider" onclick="toggleSwitch('darkmode')"></span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="coordinates">Show coordinates</label>
+								<div class="form-switch">
+									<input type="checkbox" id="coordinates" checked />
+									<span class="switch-slider" onclick="toggleSwitch('coordinates')"></span>
+								</div>
+							</div>
+
+							<div class="form-group has-error">
+								<label class="form-label" for="email-error">Email (Error State)</label>
+								<input type="email" id="email-error" class="form-control" value="invalid-email" />
+								<div class="form-feedback danger">Please enter a valid email address.</div>
+							</div>
+
+							<div class="form-group has-success">
+								<label class="form-label" for="username-success">Username (Success State)</label>
+								<input type="text" id="username-success" class="form-control" value="player123" />
+								<div class="form-feedback success">Username is available!</div>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="game-rating">Game Rating (Info)</label>
+								<input type="number" id="game-rating" class="form-control" value="1200" min="100" max="3000" />
+								<div class="form-feedback primary">Your current chess rating</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-header">
+							<h3>Form Sizes & States</h3>
+						</div>
+						<div class="card-body">
+							<div class="form-group">
+								<label class="form-label" for="small-input">Small Input</label>
+								<input
+									type="text"
+									id="small-input"
+									class="form-control form-control-sm"
+									placeholder="Small size input"
+								/>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="default-input">Default Input</label>
+								<input type="text" id="default-input" class="form-control" placeholder="Default size input" />
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="large-input">Large Input</label>
+								<input
+									type="text"
+									id="large-input"
+									class="form-control form-control-lg"
+									placeholder="Large size input"
+								/>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="disabled-input">Disabled Input</label>
+								<input
+									type="text"
+									id="disabled-input"
+									class="form-control"
+									placeholder="This input is disabled"
+									disabled
+								/>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="readonly-input">Readonly Input</label>
+								<input type="text" id="readonly-input" class="form-control" value="This is readonly" readonly />
+							</div>
+
+							<div class="form-group">
+								<button class="btn-primary" type="submit">Submit Form</button>
+								<button class="btn-secondary" type="button" style="margin-left: 1rem">Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Chess Game Components -->
+			<section class="section">
+				<h2>Chess Game Components</h2>
+
+				<h3>Chess Board</h3>
+				<div class="chess-board" style="margin: 2rem auto; max-width: 400px">
+					<!-- Row 8 -->
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♜</span></div>
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♞</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♝</span></div>
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♛</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♚</span></div>
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♝</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♞</span></div>
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♜</span></div>
+
+					<!-- Row 7 -->
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♟</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♟</span></div>
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♟</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♟</span></div>
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♟</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♟</span></div>
+					<div class="chess-square light-square"><span class="chess-piece dark-piece">♟</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece dark-piece">♟</span></div>
+
+					<!-- Empty rows 6-3 -->
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square valid-move"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square selected"></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♙</span></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"></div>
+					<div class="chess-square dark-square"></div>
+
+					<!-- Row 2 -->
+					<div class="chess-square dark-square"><span class="chess-piece light-piece">♙</span></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♙</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece light-piece">♙</span></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♙</span></div>
+					<div class="chess-square dark-square"></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♙</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece light-piece">♙</span></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♙</span></div>
+
+					<!-- Row 1 -->
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♖</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece light-piece">♘</span></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♗</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece light-piece">♕</span></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♔</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece light-piece">♗</span></div>
+					<div class="chess-square light-square"><span class="chess-piece light-piece">♘</span></div>
+					<div class="chess-square dark-square"><span class="chess-piece light-piece">♖</span></div>
+				</div>
+
+				<h3>Game UI Components</h3>
+				<div class="demo-grid">
+					<div class="player-info active-player">
+						<div class="player-avatar">A</div>
+						<div class="player-details">
+							<div class="player-name">Alice</div>
+							<div class="player-stats">Rating: 1200</div>
+						</div>
+						<div class="player-timer">10:30</div>
+					</div>
+
+					<div class="game-status status-playing">White to move</div>
+
+					<div class="move-history">
+						<div class="move-item">
+							<span class="move-number">1.</span>
+							<span class="move-notation">e4 e5</span>
+							<span class="move-time">0:05</span>
+						</div>
+						<div class="move-item current-move">
+							<span class="move-number">2.</span>
+							<span class="move-notation">Nf3</span>
+							<span class="move-time">0:03</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Navigation Components -->
+			<section class="section">
+				<h2>Navigation Components</h2>
+
+				<h3>Tabs</h3>
+				<div class="tabs">
+					<ul class="tab-list">
+						<li class="tab-item">
+							<a href="#" class="tab-link active">Game</a>
+						</li>
+						<li class="tab-item">
+							<a href="#" class="tab-link">Analysis</a>
+						</li>
+						<li class="tab-item">
+							<a href="#" class="tab-link">History</a>
+						</li>
+					</ul>
+				</div>
+
+				<h3>Breadcrumbs</h3>
+				<nav class="breadcrumb">
+					<div class="breadcrumb-item">
+						<a href="#">Home</a>
+					</div>
+					<div class="breadcrumb-item">
+						<a href="#">Games</a>
+					</div>
+					<div class="breadcrumb-item">Standard Chess</div>
+				</nav>
+			</section>
+
+			<!-- Utility Components -->
+			<section class="section">
+				<h2>Utility Components</h2>
+
+				<div class="demo-grid">
+					<div>
+						<h3>Loading States</h3>
+						<div style="display: flex; gap: 1rem; align-items: center; margin: 1rem 0">
+							<div class="spinner spinner-sm"></div>
+							<div class="spinner"></div>
+							<div class="spinner spinner-lg"></div>
+						</div>
+					</div>
+
+					<div>
+						<h3>Progress Bars</h3>
+						<div class="progress" style="margin: 1rem 0">
+							<div class="progress-bar" style="width: 75%"></div>
+						</div>
+						<div class="progress">
+							<div class="progress-bar progress-success progress-striped" style="width: 60%"></div>
+						</div>
+					</div>
+
+					<div>
+						<h3>Badges</h3>
+						<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; align-items: center">
+							<span class="badge badge-success">Active Player</span>
+							<span class="badge badge-danger">Game Over</span>
+							<span class="badge badge-warning">Time Running Out</span>
+							<span class="badge badge-info">Your Turn</span>
+							<span class="badge">Default</span>
+						</div>
+
+						<h4 style="margin-top: 1.5rem">Outline Badges</h4>
+						<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; align-items: center">
+							<span class="badge badge-outline badge-success">Winner</span>
+							<span class="badge badge-outline badge-danger">Check</span>
+							<span class="badge badge-outline badge-info">Spectating</span>
+						</div>
+					</div>
+
+					<div>
+						<h3>Alerts</h3>
+						<div class="alert alert-success">
+							<button class="alert-close" onclick="closeAlert(this)">
+								<img src="/public/icons/close.svg" alt="Close" width="20" height="20" />
+							</button>
+							<div class="alert-title">Game Won!</div>
+							Congratulations, you've won the game!
+						</div>
+						<div class="alert alert-warning">
+							<button class="alert-close" onclick="closeAlert(this)">
+								<img src="/public/icons/close.svg" alt="Close" width="20" height="20" />
+							</button>
+							<div class="alert-title">Time Warning</div>
+							You have less than 2 minutes remaining.
+						</div>
+						<div class="alert alert-danger">
+							<button class="alert-close" onclick="closeAlert(this)">
+								<img src="/public/icons/close.svg" alt="Close" width="20" height="20" />
+							</button>
+							<div class="alert-title">Check!</div>
+							You are in check! Make a move to escape.
+						</div>
+						<div class="alert alert-info">
+							<button class="alert-close" onclick="closeAlert(this)">
+								<img src="/public/icons/close.svg" alt="Close" width="20" height="20" />
+							</button>
+							<div class="alert-title">Information</div>
+							It's your turn to move.
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Notification Components -->
+			<section class="section">
+				<h2>Notification Components</h2>
+				<div class="component-demo">
+					<h3>Notification Notifications</h3>
+					<p>Click the buttons below to trigger different notification notifications:</p>
+					<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0">
+						<button
+							class="btn-success"
+							onclick="showNotification('success', 'Success!', 'Your game has been saved successfully.')"
+						>
+							Show Success Notification
+						</button>
+						<button
+							class="btn-danger"
+							onclick="showNotification('error', 'Error!', 'Failed to connect to game server.')"
+						>
+							Show Error Notification
+						</button>
+						<button class="btn-warning" onclick="showNotification('warning', 'Warning!', 'Your time is running low.')">
+							Show Warning Notification
+						</button>
+						<button class="btn-primary" onclick="showNotification('info', 'Info', 'A new game update is available.')">
+							Show Info Notification
+						</button>
+					</div>
+					<p><small>Notification notifications will appear in the top-right corner of the screen.</small></p>
+				</div>
+			</section>
+
+			<!-- Modal Components -->
+			<section class="section">
+				<h2>Modal Components</h2>
+				<div class="component-demo">
+					<h3>Modal Dialogs</h3>
+					<p>Click the buttons below to see different modal variations:</p>
+					<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0">
+						<button class="btn-primary" onclick="openModal('demo-modal')">Open Settings Modal</button>
+						<button class="btn-secondary" onclick="openModal('info-modal')">Open Info Modal</button>
+						<button class="btn-danger" onclick="openModal('confirm-modal')">Open Confirmation Modal</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- Color System -->
+			<section class="section">
+				<h2>Color System</h2>
+				<div class="color-palette">
+					<div class="color-card primary">Primary<br />#3b82f6</div>
+					<div class="color-card secondary">Secondary<br />#1e40af</div>
+					<div class="color-card accent">Accent<br />#93c5fd</div>
+					<div class="color-card neutral">Neutral<br />#8b949e</div>
+					<div class="color-card success">Success<br />#22c55e</div>
+					<div class="color-card danger">Danger<br />#ef4444</div>
+					<div class="color-card warning">Warning<br />#fbbf24</div>
+				</div>
+			</section>
+
+			<footer class="section">
+				<p>
+					This comprehensive component library provides all the building blocks needed for your Chess Variant Simulator
+					interface.
+				</p>
+			</footer>
+		</div>
+
+		<!-- Notification Container -->
+		<div class="notification-container" id="notification-container"></div>
+
+		<!-- Demo Modals -->
+		<div class="modal-overlay" id="demo-modal" style="display: none">
+			<div class="modal">
+				<div class="modal-header">
+					<h3>Game Settings</h3>
+					<button class="modal-close" onclick="closeModal('demo-modal')">
+						<img src="/public/icons/close.svg" alt="Close" width="24" height="24" />
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Configure your game settings and preferences.</p>
+					<div class="form-group">
+						<label class="form-label">Time Control</label>
+						<select class="form-control">
+							<option>5 minutes</option>
+							<option>10 minutes</option>
+							<option>30 minutes</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Game Variant</label>
+						<select class="form-control">
+							<option>Standard Chess</option>
+							<option>King of the Hill</option>
+							<option>Three-Check</option>
+							<option>Atomic Chess</option>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn-secondary" onclick="closeModal('demo-modal')">Cancel</button>
+					<button class="btn-primary">Save Settings</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-overlay" id="info-modal" style="display: none">
+			<div class="modal">
+				<div class="modal-header">
+					<h3>Game Information</h3>
+					<button class="modal-close" onclick="closeModal('info-modal')">
+						<img src="/public/icons/close.svg" alt="Close" width="24" height="24" />
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Learn about the current chess variant and its rules.</p>
+					<h4>King of the Hill</h4>
+					<p>Win by getting your king to the center four squares (d4, d5, e4, e5) or by traditional checkmate.</p>
+					<div class="alert alert-info">
+						<div class="alert-title">Pro Tip</div>
+						Control the center early to limit your opponent's king mobility.
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn-primary" onclick="closeModal('info-modal')">Got it!</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-overlay" id="confirm-modal" style="display: none">
+			<div class="modal">
+				<div class="modal-header">
+					<h3>Resign Game</h3>
+					<button class="modal-close" onclick="closeModal('confirm-modal')">
+						<img src="/public/icons/close.svg" alt="Close" width="24" height="24" />
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-warning">
+						<div class="alert-title">Are you sure?</div>
+						This action cannot be undone. You will lose this game.
+					</div>
+					<p>Do you really want to resign from this game?</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn-secondary" onclick="closeModal('confirm-modal')">Cancel</button>
+					<button class="btn-danger">Yes, Resign</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// Alert close functionality
+			function closeAlert(button) {
+				const alert = button.closest(".alert");
+				alert.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+				alert.style.opacity = "0";
+				alert.style.transform = "translateY(-10px)";
+
+				setTimeout(() => {
+					alert.remove();
+				}, 300);
+			}
+
+			// Toggle switch functionality
+			function toggleSwitch(switchId) {
+				const input = document.getElementById(switchId);
+				if (input) {
+					input.checked = !input.checked;
+				}
+			}
+
+			// Modal functionality
+			function openModal(modalId) {
+				const modal = document.getElementById(modalId);
+				if (modal) {
+					modal.style.display = "flex";
+					modal.classList.add("modal-open");
+					document.body.style.overflow = "hidden"; // Prevent background scrolling
+
+					// Add click outside to close
+					modal.addEventListener("click", function (e) {
+						if (e.target === modal) {
+							closeModal(modalId);
+						}
+					});
+				}
+			}
+
+			function closeModal(modalId) {
+				const modal = document.getElementById(modalId);
+				if (modal) {
+					modal.classList.remove("modal-open");
+					document.body.style.overflow = ""; // Restore scrolling
+
+					// Hide modal after transition
+					setTimeout(() => {
+						modal.style.display = "none";
+					}, 300);
+				}
+			}
+
+			// Close modal with Escape key
+			document.addEventListener("keydown", function (e) {
+				if (e.key === "Escape") {
+					const openModals = document.querySelectorAll(".modal-overlay.modal-open");
+					openModals.forEach((modal) => {
+						const modalId = modal.id;
+						closeModal(modalId);
+					});
+				}
+			});
+
+			// Notification functionality
+			function showNotification(type, title, message) {
+				const container = document.getElementById("notification-container");
+				if (!container) return;
+
+				// Create notification element
+				const notification = document.createElement("div");
+				notification.className = `notification notification-${type}`;
+
+				notification.innerHTML = `
+					<div class="notification-content">
+						<div class="notification-icon">${getNotificationIcon(type)}</div>
+						<div class="notification-body">
+							<div class="notification-title">${title}</div>
+							<div class="notification-message">${message}</div>
+						</div>
+						<button class="notification-close" onclick="closeNotification(this)">
+							<img src="/public/icons/close.svg" alt="Close" width="16" height="16" />
+						</button>
+					</div>
+				`;
+
+				// Add notification to container
+				container.appendChild(notification);
+
+				// Auto-remove notification after 5 seconds
+				setTimeout(() => {
+					if (notification.parentNode) {
+						closeNotification(notification.querySelector(".notification-close"));
+					}
+				}, 5000);
+			}
+
+			function closeNotification(button) {
+				const notification = button.closest(".notification");
+				if (notification) {
+					notification.style.animation = "slideOutNotification 0.3s ease forwards";
+
+					setTimeout(() => {
+						if (notification.parentNode) {
+							notification.parentNode.removeChild(notification);
+						}
+					}, 300);
+				}
+			}
+
+			function getNotificationIcon(type) {
+				switch (type) {
+					case "success":
+						return '<img src="/public/icons/check.svg" alt="Success" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(91%);" />';
+					case "error":
+						return '<img src="/public/icons/error.svg" alt="Error" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);" />';
+					case "warning":
+						return '<img src="/public/icons/warning.svg" alt="Warning" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(84%) sepia(84%) saturate(2500%) hue-rotate(2deg) brightness(101%) contrast(107%);" />';
+					case "info":
+						return '<img src="/public/icons/info.svg" alt="Info" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(45%) sepia(62%) saturate(4547%) hue-rotate(211deg) brightness(100%) contrast(91%);" />';
+					default:
+						return '<img src="/public/icons/info.svg" alt="Info" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(45%) sepia(62%) saturate(4547%) hue-rotate(211deg) brightness(100%) contrast(91%);" />';
+				}
+			}
+		</script>
+	</body>
+</html>
