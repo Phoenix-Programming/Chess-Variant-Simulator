@@ -1,7 +1,6 @@
-
-import { Sq_Coord } from "../board/sq-coord.js";
+import { type SqrCoord } from "../board/sq-coord";
 
 export interface Move {
-    from: Sq_Coord,
-    to: Sq_Coord
+	from: SqrCoord;
+	to: SqrCoord;
 }
