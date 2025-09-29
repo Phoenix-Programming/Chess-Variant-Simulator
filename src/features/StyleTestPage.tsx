@@ -5,7 +5,6 @@ import { Button } from "../components/Button.js";
 import { Card } from "../components/Card.js";
 import { CheckboxList } from "../components/CheckboxList.js";
 import { Dropdown } from "../components/Dropdown.js";
-import { Fieldset } from "../components/Fieldset.js";
 import { Form } from "../components/Form.js";
 import { FormDropdown } from "../components/FormDropdown.js";
 import { FormGrid, FormCol, FormColAuto } from "../components/FormGrid.js";
@@ -15,7 +14,6 @@ import { FormSection } from "../components/FormSection.js";
 import { FormTextarea } from "../components/FormTextarea.js";
 import { Loading } from "../components/Loading.js";
 import { Modal } from "../components/Modal.js";
-import { NavBar } from "../components/NavBar.js";
 import { NotificationManager } from "../components/Notification.js";
 import { Progress } from "../components/Progress.js";
 import { Radio } from "../components/Radio.js";
@@ -26,7 +24,23 @@ export function StyleTestPage() {
 	const [showInfoModal, setShowInfoModal] = useState(false);
 	const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-	const [formData, setFormData] = useState({
+	type FormData = {
+		playerName: string;
+		email: string;
+		gameVariant: string;
+		timeControl: string;
+		gameNotes: string;
+		notifications: boolean;
+		sounds: boolean;
+		analysis: boolean;
+		highlights: boolean;
+		theme: string;
+		autosave: boolean;
+		darkmode: boolean;
+		coordinates: boolean;
+	};
+
+	const [formData, setFormData] = useState<FormData>({
 		playerName: "ChessMaster",
 		email: "",
 		gameVariant: "",
@@ -72,7 +86,7 @@ export function StyleTestPage() {
 		{ id: "highlights", label: "Highlight possible moves", checked: formData.highlights }
 	];
 
-	const handleInputChange = (field: string, value: any) => {
+	const handleInputChange = (field: keyof FormData, value: FormData[keyof FormData]) => {
 		setFormData((prev) => ({ ...prev, [field]: value }));
 	};
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { FormGroup } from "./FormGroup.js";
 import { Dropdown } from "./Dropdown.js";
+import classNames from "classnames";
 
 type FormDropdownProps = React.ComponentProps<typeof Dropdown> & {
 	label?: string;
@@ -8,9 +9,14 @@ type FormDropdownProps = React.ComponentProps<typeof Dropdown> & {
 };
 
 export function FormDropdown({ label, required, ...dropdownProps }: FormDropdownProps): React.JSX.Element {
-	const dropdownElement = <Dropdown {...dropdownProps} />;
+	const dropdownElement = <Dropdown {...dropdownProps} data-required={required} />;
 
 	if (!label) return dropdownElement;
 
-	return <FormGroup label={label}>{dropdownElement}</FormGroup>;
+	return (
+		<FormGroup className="form-group">
+			<label className={classNames("form-label", { required })}>{label}</label>
+			{dropdownElement}
+		</FormGroup>
+	);
 }
