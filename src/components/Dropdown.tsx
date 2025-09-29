@@ -113,6 +113,7 @@ export function Dropdown({
 			className={dropdownClasses}
 			onKeyDown={handleKeyDown}
 			tabIndex={disabled ? -1 : 0}
+			{...props}
 		>
 			<button
 				type="button"
