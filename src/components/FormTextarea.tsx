@@ -61,6 +61,7 @@ export function FormTextarea({
 				className={textareaClasses}
 				maxLength={maxLength}
 				value={value}
+				required={required}
 				onChange={handleChange}
 				{...props}
 			/>
