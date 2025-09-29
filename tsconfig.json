@@ -5,6 +5,7 @@
 		{ "path": "./tsconfig.server.json" }
 	],
 	"compilerOptions": {
-		"sourceMap": true
+		"sourceMap": true,
+		"strict": true
 	}
 }
