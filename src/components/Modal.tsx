@@ -1,11 +1,11 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import classNames from "classnames";
 import "../assets/styles/components/_modal.scss";
 
 type ModalProps = React.HTMLAttributes<HTMLDivElement> & {
 	id: string;
 	size?: "sm" | "default" | "lg" | "xl";
-	fullscreen?: boolean,
+	fullscreen?: boolean;
 	title: string;
 	footer?: React.ReactNode;
 	children: React.ReactNode;
@@ -40,7 +40,7 @@ export function Modal({
 				<div className="modal-header">
 					{title && <h3 id={`${id}-title`}>{title}</h3>}
 					<button className="modal-close" onClick={() => closeModal(id)}>
-						<img src="/public/icons/close.svg" alt="Close" width="24" height="24" />
+						<img src="/icons/close.svg" alt="Close" width="24" height="24" />
 					</button>
 				</div>
 				<div className="modal-body">{children}</div>

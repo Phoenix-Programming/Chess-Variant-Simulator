@@ -33,7 +33,7 @@ export function Notification({
 					<div className="notification-message">{message}</div>
 				</div>
 				<button className="notification-close" onClick={handleClose}>
-					<img src="/public/icons/close.svg" alt="Close" width="16" height="16" />
+					<img src="/icons/close.svg" alt="Close" width="16" height="16" />
 				</button>
 			</div>
 		</div>

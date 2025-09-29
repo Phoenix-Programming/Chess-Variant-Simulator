@@ -37,28 +37,15 @@ export function Alert({
 		setTimeout(() => {
 			setIsVisible(false);
 		}, 300);
-	}
+	};
 
 	if (!isVisible) return null;
 
 	return (
-		<div
-			className={classNames(
-				"alert",
-				`alert--${variant}`,
-				isClosing && "alert-closing",
-				className
-			)}
-			{...props}
-		>
+		<div className={classNames("alert", `alert--${variant}`, isClosing && "alert-closing", className)} {...props}>
 			{dismissible && (
-				<button
-					className="alert-close"
-					onClick={handleClose}
-					aria-label="Close alert"
-					type="button"
-				>
-					<img src="/public/icons/close.svg" alt="Close" width="20" height="20" />
+				<button className="alert-close" onClick={handleClose} aria-label="Close alert" type="button">
+					<img src="/icons/close.svg" alt="Close" width="20" height="20" />
 				</button>
 			)}
 			<div className="alert-title">{title}</div>

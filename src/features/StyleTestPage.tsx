@@ -611,7 +611,7 @@ export function StyleTestPage() {
 											onChange={(e) => handleInputChange("playerName", e.target.value)}
 											placeholder="Enter your name"
 											required
-											icon={<img src="/public/icons/person.svg" width="16" height="16" alt="Person" />}
+											icon={<img src="/icons/person.svg" width="16" height="16" alt="Person" />}
 										/>
 									</FormGroup>
 								</FormCol>
