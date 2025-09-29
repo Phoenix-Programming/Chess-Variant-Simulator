@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_notifications.scss";
+import "../assets/styles/components/_notification.scss";
 
 type NotificationType = "info" | "success" | "warning" | "danger";
 
@@ -25,14 +25,7 @@ export function Notification({
 	};
 
 	return (
-		<div
-			className={classNames(
-				"notification",
-				`notification--${type}`,
-				className
-			)}
-			{...props}
-		>
+		<div className={classNames("notification", `notification--${type}`, className)} {...props}>
 			<div className="notification-content">
 				<div className="notification-icon" dangerouslySetInnerHTML={{ __html: getNotificationIcon(type) }} />
 				<div className="notification-body">
@@ -77,8 +70,14 @@ function showNotification(type: NotificationType, title: string, message: string
 
 	container.appendChild(notificationWrapper);
 
-	const root = (window as any).ReactDOM.createRoot(notificationWrapper);
-	(notificationWrapper as any)._reactRoot = root;
+	const root = (
+		window as unknown as {
+			ReactDOM: {
+				createRoot: (element: HTMLElement) => { render: (element: React.ReactElement) => void; unmount: () => void };
+			};
+		}
+	).ReactDOM.createRoot(notificationWrapper);
+	(notificationWrapper as HTMLDivElement & { _reactRoot: typeof root })._reactRoot = root;
 
 	const notificationElement = React.createElement(Notification, {
 		type,
@@ -104,7 +103,8 @@ function closeNotification(notificationId: string): void {
 	notificationElement?.classList.add("notification-closing");
 
 	setTimeout(() => {
-		(notification as any)._reactRoot?.unmount();
+		const reactRoot = (notification as HTMLElement & { _reactRoot?: { unmount: () => void } })._reactRoot;
+		reactRoot?.unmount();
 
 		notification.parentNode?.removeChild(notification);
 	}, 300);
@@ -112,10 +112,14 @@ function closeNotification(notificationId: string): void {
 
 function getNotificationIcon(type: string): string {
 	switch (type) {
-		case "success": return '<img src="/public/icons/check.svg" alt="Success" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(91%);" />';
-		case "error": return '<img src="/public/icons/error.svg" alt="Error" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);" />';
-		case "warning": return '<img src="/public/icons/warning.svg" alt="Warning" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(84%) sepia(84%) saturate(2500%) hue-rotate(2deg) brightness(101%) contrast(107%);" />';
+		case "success":
+			return '<img src="/public/icons/check.svg" alt="Success" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(91%);" />';
+		case "error":
+			return '<img src="/public/icons/error.svg" alt="Error" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);" />';
+		case "warning":
+			return '<img src="/public/icons/warning.svg" alt="Warning" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(84%) sepia(84%) saturate(2500%) hue-rotate(2deg) brightness(101%) contrast(107%);" />';
 		// info
-		default: return '<img src="/public/icons/info.svg" alt="Info" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(45%) sepia(62%) saturate(4547%) hue-rotate(211deg) brightness(100%) contrast(91%);" />';
+		default:
+			return '<img src="/public/icons/info.svg" alt="Info" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(45%) sepia(62%) saturate(4547%) hue-rotate(211deg) brightness(100%) contrast(91%);" />';
 	}
 }
