@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_loading.scss";
+import "../assets/styles/main.scss";
 
 type LoadingProps = React.HTMLAttributes<HTMLDivElement> & {
-	size?: "sm" | "lg";
+	size?: "sm" | "md" | "lg" | "xl";
 	overlay?: "area" | "fullscreen";
 	className?: string;
 };

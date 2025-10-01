@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_form.scss"
+import "../assets/styles/main.scss";
 
 type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 	icon?: React.ReactNode;
@@ -8,8 +8,7 @@ type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export function FormInput({ icon, className, ...props }: FormInputProps): React.JSX.Element {
-	if (!icon)
-		return <input className={classNames("form-control", className)} />
+	if (!icon) return <input className={classNames("form-control", className)} {...props} />;
 
 	return (
 		<div className="form-control-icon">

@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_checkbox_&_radio.scss";
+import "../assets/styles/main.scss";
 
 type RadioOption = {
 	value: string;

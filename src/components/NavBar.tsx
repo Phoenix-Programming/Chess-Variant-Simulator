@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/layouts/_navbar.scss";
+import "../assets/styles/main.scss";
 
 type NavItem = {
 	label: string;
 	href: string;
 	active?: boolean;
-}
+};
 
 type NavBarProps = {
 	brand: {
@@ -16,7 +16,7 @@ type NavBarProps = {
 	items: NavItem[];
 	onItemClick?: (href: string) => void;
 	className?: string;
-}
+};
 
 export function NavBar({ brand, items, onItemClick, className }: NavBarProps): React.JSX.Element {
 	const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

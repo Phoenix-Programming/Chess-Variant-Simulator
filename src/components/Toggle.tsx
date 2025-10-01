@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_toggle.scss";
+import "../assets/styles/main.scss";
 
 type ToggleProps = React.HTMLAttributes<HTMLDivElement> & {
 	id: string;

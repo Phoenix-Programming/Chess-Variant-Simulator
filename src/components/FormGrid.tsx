@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_form.scss"
+import "../assets/styles/main.scss";
 
 type FormGridProps = React.HTMLAttributes<HTMLDivElement> & {
 	children: React.ReactNode;
