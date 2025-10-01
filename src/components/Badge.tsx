@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_badge.scss";
+import "../assets/styles/main.scss";
 
 type BadgeProps = React.HTMLAttributes<HTMLSpanElement> & {
 	type?: "solid" | "outline";
@@ -17,15 +17,7 @@ export function Badge({
 	...props
 }: BadgeProps): React.JSX.Element {
 	return (
-		<span
-			className={classNames(
-				"badge",
-				`badge--${type}`,
-				`badge--${variant}`,
-				className
-			)}
-			{...props}
-		>
+		<span className={classNames("badge", `badge--${type}`, `badge--${variant}`, className)} {...props}>
 			{text}
 		</span>
 	);
