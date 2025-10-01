@@ -1,30 +1,30 @@
 // Normalize CSS in order to have a consistent baseline across browsers
-@import "normalize.css/normalize.css";
+@use "normalize.css/normalize.css";
 
-@import "abstracts/functions";
-@import "abstracts/mixins";
-@import "abstracts/variables";
+@use "abstracts/functions";
+@use "abstracts/mixins";
+@use "abstracts/variables";
 
-@import "base/globals";
+@use "base/globals";
 
-@import "components/alert";
-@import "components/badge";
-@import "components/button";
-@import "components/card";
-@import "components/checkbox_&_radio";
-@import "components/chess";
-@import "components/divider";
-@import "components/dropdown";
-@import "components/form";
-@import "components/loading";
-@import "components/modal";
-@import "components/navigation";
-@import "components/notification";
-@import "components/progress";
-@import "components/toggle";
-@import "components/tooltip";
+@use "components/alert";
+@use "components/badge";
+@use "components/button";
+@use "components/card";
+@use "components/checkbox_radio";
+@use "components/chess";
+@use "components/divider";
+@use "components/dropdown";
+@use "components/form";
+@use "components/loading";
+@use "components/modal";
+@use "components/navigation";
+@use "components/notification";
+@use "components/progress";
+@use "components/toggle";
+@use "components/tooltip";
 
-@import "layouts/navbar";
+@use "layouts/navbar";
 
-@import "themes/boards/defaultBoard";
-@import "themes/pieces/defaultPieces";
+@use "themes/boards/defaultBoard";
+@use "themes/pieces/defaultPieces";

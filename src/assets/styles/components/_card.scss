@@ -1,5 +1,5 @@
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 @mixin _card-variant($color) {
 	border-color: $color;
@@ -14,13 +14,14 @@
 	background-color: $background-alt;
 	border: 1px solid $border-primary-color;
 	border-radius: $border-radius-md;
+	margin-top: 4px;
 	padding: $spacing-md;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: box-shadow $transition-fast, transform $transition-super-fast;
 
 	&.card--primary { @include _card-variant($primary-color); }
 
-	&.card--secondary { @include _card-variant($secondary-color) }
+	&.card--secondary { @include _card-variant($secondary-color); }
 
 	&.card--success { @include _card-variant($success); }
 
@@ -50,7 +51,7 @@
 
 		&.card--compact {
 			padding: $spacing-sm;
-			margin: -$spacing-sm -$spacing-sm $spacing-sm -$spacing-sm;
+			margin: (-$spacing-sm) (-$spacing-sm) $spacing-sm (-$spacing-sm);
 		}
 	}
 
@@ -70,7 +71,7 @@
 
 		&.card--compact {
 			padding: $spacing-sm;
-			margin: $spacing-sm -$spacing-sm -$spacing-sm -$spacing-sm;
+			margin: $spacing-sm (-$spacing-sm) (-$spacing-sm) (-$spacing-sm);
 		}
 	}
 

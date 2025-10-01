@@ -1,4 +1,4 @@
-@import "../abstracts/variables";
+@use "variables" as *;
 
 // Convert pixels to rem units based on a base font size
 @function rem($px, $base: $font-size-base) {

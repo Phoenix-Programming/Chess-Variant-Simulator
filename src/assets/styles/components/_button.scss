@@ -1,5 +1,6 @@
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
 
 @mixin _btn-solid($color) {
 	background-color: $color;
@@ -7,14 +8,14 @@
 	border: 1px solid $color;
 
 	&:hover:not(:disabled) {
-		background-color: darken($color, 8%);
-		border-color: darken($color, 8%);
+		background-color: color.adjust($color, $lightness: -8%);
+		border-color: color.adjust($color, $lightness: -8%);
 		transform: translateY(-1px);
 	}
 
 	&:active:not(:disabled) {
 		transform: translateY(0);
-		background-color: darken($color, 12%);
+		background-color: color.adjust($color, $lightness: -12%);
 	}
 }
 
@@ -31,7 +32,7 @@
 
 	&:active:not(:disabled) {
 		transform: translateY(0);
-		background-color: darken($color, 8%);
+		background-color: color.adjust($color, $lightness: -8%);
 	}
 }
 
@@ -47,6 +48,8 @@
 }
 
 .btn {
+	cursor: pointer;
+
 	&--sm {
 		@include _btn-size($spacing-sm * 0.75, $spacing-sm, $font-size-sm, $font-weight-normal);
 	}
@@ -55,22 +58,29 @@
 		@include _btn-size($spacing-md, $spacing-lg, $font-size-lg, $font-weight-medium);
 	}
 
-	&--pill { border-radius: $border-radius-pill; }
+	&--pill {
+		border-radius: $border-radius-pill;
+	}
 
 	&--icon {
 		width: 2.5rem;
 		height: 2.5rem;
 		@include flex-center;
 		padding: 0;
+		border-radius: $border-radius-sm;
 
 		&-sm {
 			width: 2rem;
 			height: 2rem;
+			@include flex-center;
+			padding: 0;
 		}
 
 		&-lg {
 			width: 3rem;
 			height: 3rem;
+			@include flex-center;
+			padding: 0;
 		}
 	}
 

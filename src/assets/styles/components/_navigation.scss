@@ -1,5 +1,5 @@
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 // Breadcrumb navigation
 .breadcrumb {
@@ -26,6 +26,7 @@
 
 		&:not(:last-child)::after {
 			content: "/";
+			margin: 0 0.5rem;
 			color: $text-tertiary-color;
 		}
 

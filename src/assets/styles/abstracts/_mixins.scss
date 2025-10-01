@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 // For responsive design breakpoints
 @mixin respond($breakpoint) {
 	@if $breakpoint == sm {
@@ -62,11 +64,15 @@
 
 // Form validation state mixins
 @mixin form-validation-state($color) {
-	.form-label { color: $color; }
+	.form-label {
+		color: $color;
+	}
 
 	.form-control {
 		border-color: $color;
 
-		&:focus { box-shadow: 0 0 0 2px rgba($color, 0.25); }
+		&:focus {
+			box-shadow: 0 0 0 2px rgba($color, 0.25);
+		}
 	}
 }
