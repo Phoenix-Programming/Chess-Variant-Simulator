@@ -1,11 +1,18 @@
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 // Form group
 .form-group {
 	margin-bottom: $spacing-md;
 
 	&:last-child { margin-bottom: 0; }
+}
+
+// Form grid row spacing
+.form-row { margin-bottom: $spacing-sm; }
+
+.form-grid {
+	.form-col { margin-bottom: $spacing-sm; }
 }
 
 // Form labels
@@ -40,6 +47,8 @@
 	}
 }
 
+textarea.form-control { resize: vertical; }
+
 // Form control with icon
 .form-control-icon {
 	position: relative;
@@ -53,6 +62,9 @@
 		transform: translateY(-50%);
 		color: $text-tertiary-color;
 		pointer-events: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }
 
@@ -60,7 +72,7 @@
 select.form-control {
 	appearance: none;
 	-webkit-appearance: none;
-	background-image: url("/public/icons/chevron_down.svg");
+	background-image: url("@icons/chevron_down.svg");
 	background-repeat: no-repeat;
 	background-position: right $spacing-sm center;
 	background-size: 1.5rem;
@@ -69,7 +81,7 @@ select.form-control {
 
 	&:hover { border-color: $primary-color; }
 
-	&:focus { background-image: url("/public/icons/chevron_down.svg"); }
+	&:focus { background-image: url("@icons/chevron_down.svg"); }
 }
 
 // Form validation states
@@ -81,9 +93,21 @@ select.form-control {
 
 // Form validation messages
 .form-feedback {
-	margin-top: $spacing-sm;
-	font-size: $font-size-sm;
+	margin-top: 0.25rem;
+	font-size: 0.875rem;
+	padding: 0.25rem;
+	border-radius: 0.25rem;
 	color: $text-primary-color;
+
+	&.primary { background-color: $primary-color; }
+
+	&.neutral { background-color: $neutral-color; }
+
+	&.success { background-color: $success; }
+
+	&.warning { background-color: $warning; }
+
+	&.danger { background-color: $danger; }
 }
 
 // Fieldset styling
@@ -118,104 +142,115 @@ select.form-control {
 
 // Form help text
 .form-help {
-  margin-top: $spacing-sm * 0.5;
-  font-size: $font-size-sm * 0.875;
-  color: $text-tertiary-color;
-  line-height: 1.4;
+	margin-top: $spacing-sm * 0.5;
+	font-size: $font-size-sm * 0.875;
+	color: $text-tertiary-color;
+	line-height: 1.4;
 }
 
 // Textarea wrapper
-.form-textarea-wrapper {
-  position: relative;
-}
+.form-textarea-wrapper { position: relative; }
 
 .form-char-count {
-  position: absolute;
-  bottom: $spacing-sm;
-  right: $spacing-sm;
-  font-size: $font-size-sm * 0.75;
-  color: $text-tertiary-color;
-  background-color: rgba($background-alt, 0.8);
-  padding: $spacing-sm * 0.25 $spacing-sm * 0.5;
-  border-radius: $border-radius-sm;
+	position: absolute;
+	bottom: $spacing-sm;
+	right: $spacing-sm;
+	font-size: $font-size-sm * 0.75;
+	color: $text-tertiary-color;
+	background-color: rgba($background-alt, 0.8);
+	padding: $spacing-sm * 0.25 $spacing-sm * 0.5;
+	border-radius: $border-radius-sm;
 
-  &--error {
-    color: $danger;
-  }
+	&--error { color: $danger; }
 }
 
 // Form sections
 .form-section {
-  margin-bottom: $spacing-lg;
+	margin-bottom: $spacing-lg;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+	&:last-child { margin-bottom: 0; }
 }
 
 .form-section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: $spacing-md;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: $spacing-md;
 
-  .form-section--collapsible & {
-    cursor: pointer;
-    padding: $spacing-sm;
-    border-radius: $border-radius-sm;
-    transition: background-color $transition-super-fast;
+	.form-section--collapsible & {
+		cursor: pointer;
+		padding: $spacing-sm;
+		border-radius: $border-radius-sm;
+		transition: background-color $transition-super-fast;
 
-    &:hover {
-      background-color: rgba($primary-color, 0.05);
-    }
+		&:hover { background-color: rgba($primary-color, 0.05); }
 
-    &:focus {
-      outline: none;
-      background-color: rgba($primary-color, 0.1);
-    }
-  }
+		&:focus {
+			outline: none;
+			background-color: rgba($primary-color, 0.1);
+		}
+	}
 }
 
-.form-section-header-content {
-  flex: 1;
-}
+.form-section-header-content { flex: 1; }
 
 .form-section-title {
-  margin: 0;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-medium;
-  color: $text-primary-color;
+	margin: 0;
+	font-size: $font-size-lg;
+	font-weight: $font-weight-medium;
+	color: $text-primary-color;
 }
 
 .form-section-subtitle {
-  margin: $spacing-sm * 0.5 0 0;
-  font-size: $font-size-sm;
-  color: $text-secondary-color;
+	margin: $spacing-sm * 0.5 0 0;
+	font-size: $font-size-sm;
+	color: $text-secondary-color;
 }
 
 .form-section-toggle {
-  font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
-  color: $primary-color;
-  min-width: 1.5rem;
-  text-align: center;
+	font-size: $font-size-lg;
+	font-weight: $font-weight-bold;
+	color: $primary-color;
+	min-width: 1.5rem;
+	text-align: center;
 }
 
 .form-section-content {
-  animation: formSectionExpand 0.2s ease-out;
+	animation: formSectionExpand 0.2s ease-out;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
 }
 
 .form-section--collapsed .form-section-content {
-  display: none;
+	animation: formSectionCollapse 0.2s ease-out forwards;
+}
+
+.form-section--collapsing .form-section-content {
+	animation: formSectionCollapse 0.2s ease-out forwards;
 }
 
 @keyframes formSectionExpand {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+		max-height: 0;
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		max-height: 1000px;
+	}
+}
+
+@keyframes formSectionCollapse {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+		max-height: 1000px;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-10px);
+		max-height: 0;
+	}
 }
