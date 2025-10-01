@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_alert.scss";
+import "../assets/styles/main.scss";
+import CloseIcon from "@icons/close.svg";
 
 type AlertProps = React.HTMLAttributes<HTMLDivElement> & {
-	variant?: "info" | "success" | "warning" | "danger";
+	variant?: "info" | "neutral" | "success" | "warning" | "danger";
 	title: string;
 	message: string;
 	dismissible?: boolean;
@@ -45,7 +46,7 @@ export function Alert({
 		<div className={classNames("alert", `alert--${variant}`, isClosing && "alert-closing", className)} {...props}>
 			{dismissible && (
 				<button className="alert-close" onClick={handleClose} aria-label="Close alert" type="button">
-					<img src="/icons/close.svg" alt="Close" width="20" height="20" />
+					<img src={CloseIcon} alt="Close" width="20" height="20" />
 				</button>
 			)}
 			<div className="alert-title">{title}</div>
