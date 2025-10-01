@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_button.scss";
+import "../assets/styles/main.scss";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 	styleType?: "solid" | "outline";
@@ -21,16 +21,7 @@ export function Button({
 	...props
 }: ButtonProps): React.JSX.Element {
 	return (
-		<button
-			className={classNames(
-				"btn",
-				`btn--${styleType}`,
-				`btn--${variant}`,
-				`btn--${size}`,
-				className
-			)}
-			{...props}
-		>
+		<button className={classNames("btn", `btn--${styleType}`, `btn--${variant}`, `btn--${size}`, className)} {...props}>
 			{children || text}
 		</button>
 	);
