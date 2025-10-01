@@ -1,6 +1,12 @@
 import React from "react";
+import ReactDOM from "react-dom/client";
 import classNames from "classnames";
-import "../assets/styles/components/_notification.scss";
+import "../assets/styles/main.scss";
+import CloseIcon from "@icons/close.svg";
+import CheckIcon from "@icons/check.svg";
+import ErrorIcon from "@icons/error.svg";
+import WarningIcon from "@icons/warning.svg";
+import InfoIcon from "@icons/info.svg";
 
 type NotificationType = "info" | "success" | "warning" | "danger";
 
@@ -27,13 +33,13 @@ export function Notification({
 	return (
 		<div className={classNames("notification", `notification--${type}`, className)} {...props}>
 			<div className="notification-content">
-				<div className="notification-icon" dangerouslySetInnerHTML={{ __html: getNotificationIcon(type) }} />
+				<div className="notification-icon">{getNotificationIcon(type)}</div>
 				<div className="notification-body">
 					<div className="notification-title">{title}</div>
 					<div className="notification-message">{message}</div>
 				</div>
 				<button className="notification-close" onClick={handleClose}>
-					<img src="/icons/close.svg" alt="Close" width="16" height="16" />
+					<img src={CloseIcon} alt="Close" width="16" height="16" />
 				</button>
 			</div>
 		</div>
@@ -70,13 +76,7 @@ function showNotification(type: NotificationType, title: string, message: string
 
 	container.appendChild(notificationWrapper);
 
-	const root = (
-		window as unknown as {
-			ReactDOM: {
-				createRoot: (element: HTMLElement) => { render: (element: React.ReactElement) => void; unmount: () => void };
-			};
-		}
-	).ReactDOM.createRoot(notificationWrapper);
+	const root = ReactDOM.createRoot(notificationWrapper);
 	(notificationWrapper as HTMLDivElement & { _reactRoot: typeof root })._reactRoot = root;
 
 	const notificationElement = React.createElement(Notification, {
@@ -110,16 +110,56 @@ function closeNotification(notificationId: string): void {
 	}, 300);
 }
 
-function getNotificationIcon(type: string): string {
+function getNotificationIcon(type: NotificationType): React.JSX.Element {
 	switch (type) {
 		case "success":
-			return '<img src="/public/icons/check.svg" alt="Success" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(91%);" />';
-		case "error":
-			return '<img src="/public/icons/error.svg" alt="Error" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);" />';
+			return (
+				<img
+					src={CheckIcon}
+					alt="Success"
+					width="20"
+					height="20"
+					style={{
+						filter: "brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(91%)"
+					}}
+				/>
+			);
+		case "danger":
+			return (
+				<img
+					src={ErrorIcon}
+					alt="Error"
+					width="20"
+					height="20"
+					style={{
+						filter: "brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%)"
+					}}
+				/>
+			);
 		case "warning":
-			return '<img src="/public/icons/warning.svg" alt="Warning" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(84%) sepia(84%) saturate(2500%) hue-rotate(2deg) brightness(101%) contrast(107%);" />';
-		// info
+			return (
+				<img
+					src={WarningIcon}
+					alt="Warning"
+					width="20"
+					height="20"
+					style={{
+						filter: "brightness(0) saturate(100%) invert(84%) sepia(84%) saturate(2500%) hue-rotate(2deg) brightness(101%) contrast(107%)"
+					}}
+				/>
+			);
+		case "info":
 		default:
-			return '<img src="/public/icons/info.svg" alt="Info" width="20" height="20" style="filter: brightness(0) saturate(100%) invert(45%) sepia(62%) saturate(4547%) hue-rotate(211deg) brightness(100%) contrast(91%);" />';
+			return (
+				<img
+					src={InfoIcon}
+					alt="Info"
+					width="20"
+					height="20"
+					style={{
+						filter: "brightness(0) saturate(100%) invert(45%) sepia(62%) saturate(4547%) hue-rotate(211deg) brightness(100%) contrast(91%)"
+					}}
+				/>
+			);
 	}
 }

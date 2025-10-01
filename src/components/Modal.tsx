@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_modal.scss";
+import "../assets/styles/main.scss";
+import CloseIcon from "@icons/close.svg";
 
 type ModalProps = React.HTMLAttributes<HTMLDivElement> & {
 	id: string;
@@ -10,6 +11,7 @@ type ModalProps = React.HTMLAttributes<HTMLDivElement> & {
 	footer?: React.ReactNode;
 	children: React.ReactNode;
 	className?: string;
+	onClose?: () => void;
 };
 
 export function Modal({
@@ -20,10 +22,26 @@ export function Modal({
 	footer,
 	children,
 	className,
+	onClose,
 	...props
 }: ModalProps): React.JSX.Element {
+	useEffect(() => {
+		const handleEscapeKey = (event: KeyboardEvent) => {
+			if (event.key === "Escape") onClose?.();
+		};
+
+		document.addEventListener("keydown", handleEscapeKey);
+		return () => {
+			document.removeEventListener("keydown", handleEscapeKey);
+		};
+	}, [onClose]);
+
+	const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (e.target === e.currentTarget) onClose?.();
+	};
+
 	return (
-		<div className="modal-overlay">
+		<div className="modal-overlay" onClick={handleOverlayClick}>
 			<div
 				className={classNames(
 					"modal",
@@ -39,8 +57,8 @@ export function Modal({
 			>
 				<div className="modal-header">
 					{title && <h3 id={`${id}-title`}>{title}</h3>}
-					<button className="modal-close" onClick={() => closeModal(id)}>
-						<img src="/icons/close.svg" alt="Close" width="24" height="24" />
+					<button className="modal-close" onClick={onClose}>
+						<img src={CloseIcon} alt="Close" width="24" height="24" />
 					</button>
 				</div>
 				<div className="modal-body">{children}</div>
@@ -48,18 +66,4 @@ export function Modal({
 			</div>
 		</div>
 	);
-}
-
-function closeModal(modalId: string): void {
-	const modal = document.getElementById(modalId);
-
-	if (!modal) return;
-
-	modal.classList.remove("modal-open");
-	document.body.style.overflow = ""; // restore scrolling
-
-	// hide modal after transition
-	setTimeout(() => {
-		modal.style.display = "none";
-	}, 300);
 }

@@ -19,10 +19,17 @@ import { Progress } from "../components/Progress.js";
 import { Radio } from "../components/Radio.js";
 import { Toggle } from "../components/Toggle.js";
 
+import PersonIcon from "@icons/person.svg";
+import SearchIcon from "@icons/search.svg";
+
 export function StyleTestPage() {
 	const [showDemoModal, setShowDemoModal] = useState(false);
 	const [showInfoModal, setShowInfoModal] = useState(false);
 	const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+	// Modal form state
+	const [modalTimeControl, setModalTimeControl] = useState("5-minutes");
+	const [modalGameVariant, setModalGameVariant] = useState("standard");
 
 	type FormData = {
 		playerName: string;
@@ -58,7 +65,7 @@ export function StyleTestPage() {
 
 	// Example options for dropdowns
 	const chessVariants = [
-		{ value: "", label: "Select a variant..." },
+		{ value: "", label: "Select a variant...", disabled: true },
 		{ value: "standard", label: "Standard Chess" },
 		{ value: "kingofhill", label: "King of the Hill" },
 		{ value: "threecheck", label: "Three-Check" },
@@ -77,6 +84,20 @@ export function StyleTestPage() {
 		{ value: "classic", label: "Classic Wood" },
 		{ value: "modern", label: "Modern Glass" },
 		{ value: "marble", label: "Marble Stone" }
+	];
+
+	// Modal dropdown options
+	const modalTimeControlOptions = [
+		{ value: "5-minutes", label: "5 minutes" },
+		{ value: "10-minutes", label: "10 minutes" },
+		{ value: "30-minutes", label: "30 minutes" }
+	];
+
+	const modalGameVariantOptions = [
+		{ value: "standard", label: "Standard Chess" },
+		{ value: "kingofhill", label: "King of the Hill" },
+		{ value: "threecheck", label: "Three-Check" },
+		{ value: "atomic", label: "Atomic Chess" }
 	];
 
 	const gamePreferences = [
@@ -104,7 +125,7 @@ export function StyleTestPage() {
 		<div>
 			<style>{`
         /* Test-specific layout styles */
-        .demo-grid {
+        /*.demo-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 2rem;
@@ -134,12 +155,6 @@ export function StyleTestPage() {
         .danger { background-color: #ef4444; }
         .warning { background-color: #fbbf24; }
 
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 1rem;
-        }
-
         .section {
           margin: 3rem 0;
           padding: 2rem 0;
@@ -151,15 +166,18 @@ export function StyleTestPage() {
           padding: 2rem;
           border-radius: 0.5rem;
           margin: 1rem 0;
-        }
+        }*/
 
         /* Chess board styles */
-        .chess-board {
+        /*.chess-board {
           display: grid;
-          grid-template-columns: repeat(8, 50px);
-          grid-template-rows: repeat(8, 50px);
+          grid-template-columns: repeat(8, 1fr);
+          grid-template-rows: repeat(8, 1fr);
           gap: 0;
           border: 2px solid #4a5568;
+          aspect-ratio: 1;
+          width: 100%;
+          max-width: 400px;
         }
 
         .chess-square {
@@ -180,10 +198,10 @@ export function StyleTestPage() {
         }
 
         .dark-piece { color: #2d3748; }
-        .light-piece { color: #f7fafc; }
+        .light-piece { color: #f7fafc; }*/
 
         /* Game UI components */
-        .player-info {
+        /*.player-info {
           display: flex;
           align-items: center;
           padding: 1rem;
@@ -272,10 +290,10 @@ export function StyleTestPage() {
         .move-time {
           color: #a0aec0;
           font-size: 0.875rem;
-        }
+        }*/
 
         /* Navigation styles */
-        .navbar {
+        /*.navbar {
           background-color: #2d3748;
           padding: 1rem 0;
           border-bottom: 1px solid #4a5568;
@@ -362,10 +380,10 @@ export function StyleTestPage() {
         .breadcrumb-item a {
           color: #3182ce;
           text-decoration: none;
-        }
+        }*/
 
         /* Form styles */
-        .form-control {
+        /*.form-control {
           width: 100%;
           padding: 0.75rem;
           border: 1px solid #4a5568;
@@ -378,9 +396,10 @@ export function StyleTestPage() {
           outline: none;
           border-color: #3182ce;
           box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-        }
+        }*/
 
-        .form-control-sm {
+        /* Textarea specific styles */
+        /*.form-control-sm {
           padding: 0.5rem;
           font-size: 0.875rem;
         }
@@ -463,58 +482,47 @@ export function StyleTestPage() {
           transform: translateX(20px);
         }
 
-        .form-feedback {
-          margin-top: 0.25rem;
-          font-size: 0.875rem;
-        }
-
-        .form-feedback.success { color: #38a169; }
-        .form-feedback.danger { color: #ef4444; }
-        .form-feedback.primary { color: #3182ce; }
-
         .has-error .form-control {
           border-color: #ef4444;
         }
 
         .has-success .form-control {
           border-color: #38a169;
-        }
+        }*/
       `}</style>
-
+			{/* Navigation Demo */}
+			<nav className="navbar">
+				<div className="navbar-container">
+					<a href="#" className="navbar-brand">
+						♔ Chess Variants
+					</a>
+					<ul className="navbar-nav">
+						<li className="navbar-item">
+							<a href="#" className="navbar-link active">
+								Home
+							</a>
+						</li>
+						<li className="navbar-item">
+							<a href="#" className="navbar-link">
+								Play
+							</a>
+						</li>
+						<li className="navbar-item">
+							<a href="#" className="navbar-link">
+								Learn
+							</a>
+						</li>
+						<li className="navbar-item">
+							<a href="#" className="navbar-link">
+								Settings
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
 			<div className="container">
-				{/* Navigation Demo */}
-				<nav className="navbar">
-					<div className="navbar-container">
-						<a href="#" className="navbar-brand">
-							♔ Chess Variants
-						</a>
-						<ul className="navbar-nav">
-							<li className="navbar-item">
-								<a href="#" className="navbar-link active">
-									Home
-								</a>
-							</li>
-							<li className="navbar-item">
-								<a href="#" className="navbar-link">
-									Play
-								</a>
-							</li>
-							<li className="navbar-item">
-								<a href="#" className="navbar-link">
-									Learn
-								</a>
-							</li>
-							<li className="navbar-item">
-								<a href="#" className="navbar-link">
-									Settings
-								</a>
-							</li>
-						</ul>
-					</div>
-				</nav>
 				<header className="section">
 					<h1>Chess Variant Simulator - Component Library</h1>
-					<p>Comprehensive showcase of all available components and styles.</p>
 				</header>
 				{/* Buttons Section */}
 				<section className="section">
@@ -611,7 +619,7 @@ export function StyleTestPage() {
 											onChange={(e) => handleInputChange("playerName", e.target.value)}
 											placeholder="Enter your name"
 											required
-											icon={<img src="/icons/person.svg" width="16" height="16" alt="Person" />}
+											icon={<img src={PersonIcon} width="16" height="16" alt="Person" />}
 										/>
 									</FormGroup>
 								</FormCol>
@@ -679,7 +687,7 @@ export function StyleTestPage() {
 						<FormGroup label="Search Players">
 							<FormInput
 								placeholder="Search for players..."
-								icon={<img src="/public/icons/search.svg" width="16" height="16" alt="Search" />}
+								icon={<img src={SearchIcon} width="16" height="16" alt="Search" />}
 							/>
 							<div className="form-feedback primary">Find players to invite to your game</div>
 						</FormGroup>
@@ -785,14 +793,13 @@ export function StyleTestPage() {
 							<div>
 								<h4>Standalone Dropdown</h4>
 								<Dropdown
-									options={chessVariants.slice(1)} // Remove placeholder for standalone
-									placeholder="Choose variant..."
+									options={chessVariants.slice(1)}
 									onChange={(value) => console.log("Selected:", value)}
 								/>
 							</div>
 							<div>
 								<h4>Disabled Dropdown</h4>
-								<Dropdown options={timeControls} placeholder="Time control..." disabled />
+								<Dropdown options={timeControls} disabled />
 							</div>
 						</div>
 					</FormSection>
@@ -804,35 +811,32 @@ export function StyleTestPage() {
 					<h3>Chess Board</h3>
 					<div className="chess-board" style={{ margin: "2rem auto", maxWidth: "400px" }}>
 						{/* Row 8 */}
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece dark-piece">♜</span>
 						</div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece dark-piece">♞</span>
 						</div>
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece dark-piece">♝</span>
 						</div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece dark-piece">♛</span>
 						</div>
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece dark-piece">♚</span>
 						</div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece dark-piece">♝</span>
 						</div>
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece dark-piece">♞</span>
 						</div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece dark-piece">♜</span>
 						</div>
 
 						{/* Row 7 */}
-						<div className="chess-square light-square">
-							<span className="chess-piece dark-piece">♟</span>
-						</div>
 						<div className="chess-square dark-square">
 							<span className="chess-piece dark-piece">♟</span>
 						</div>
@@ -852,6 +856,9 @@ export function StyleTestPage() {
 							<span className="chess-piece dark-piece">♟</span>
 						</div>
 						<div className="chess-square dark-square">
+							<span className="chess-piece dark-piece">♟</span>
+						</div>
+						<div className="chess-square light-square">
 							<span className="chess-piece dark-piece">♟</span>
 						</div>
 
@@ -875,9 +882,6 @@ export function StyleTestPage() {
 						})}
 
 						{/* Row 2 */}
-						<div className="chess-square dark-square">
-							<span className="chess-piece light-piece">♙</span>
-						</div>
 						<div className="chess-square light-square">
 							<span className="chess-piece light-piece">♙</span>
 						</div>
@@ -887,68 +891,44 @@ export function StyleTestPage() {
 						<div className="chess-square light-square">
 							<span className="chess-piece light-piece">♙</span>
 						</div>
-						<div className="chess-square dark-square"></div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece light-piece">♙</span>
 						</div>
+						<div className="chess-square light-square"></div>
 						<div className="chess-square dark-square">
 							<span className="chess-piece light-piece">♙</span>
 						</div>
 						<div className="chess-square light-square">
+							<span className="chess-piece light-piece">♙</span>
+						</div>
+						<div className="chess-square dark-square">
 							<span className="chess-piece light-piece">♙</span>
 						</div>
 
 						{/* Row 1 */}
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece light-piece">♖</span>
 						</div>
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece light-piece">♘</span>
 						</div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece light-piece">♗</span>
 						</div>
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece light-piece">♕</span>
 						</div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece light-piece">♔</span>
 						</div>
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece light-piece">♗</span>
 						</div>
-						<div className="chess-square light-square">
+						<div className="chess-square dark-square">
 							<span className="chess-piece light-piece">♘</span>
 						</div>
-						<div className="chess-square dark-square">
+						<div className="chess-square light-square">
 							<span className="chess-piece light-piece">♖</span>
-						</div>
-					</div>
-
-					<h3>Game UI Components</h3>
-					<div className="demo-grid">
-						<div className="player-info active-player">
-							<div className="player-avatar">A</div>
-							<div className="player-details">
-								<div className="player-name">Alice</div>
-								<div className="player-stats">Rating: 1200</div>
-							</div>
-							<div className="player-timer">10:30</div>
-						</div>
-
-						<div className="game-status status-playing">White to move</div>
-
-						<div className="move-history">
-							<div className="move-item">
-								<span className="move-number">1.</span>
-								<span className="move-notation">e4 e5</span>
-								<span className="move-time">0:05</span>
-							</div>
-							<div className="move-item current-move">
-								<span className="move-number">2.</span>
-								<span className="move-notation">Nf3</span>
-								<span className="move-time">0:03</span>
-							</div>
 						</div>
 					</div>
 				</section>
@@ -997,8 +977,9 @@ export function StyleTestPage() {
 							<h3>Loading States</h3>
 							<div style={{ display: "flex", gap: "1rem", alignItems: "center", margin: "1rem 0" }}>
 								<Loading size="sm" />
-								<Loading />
+								<Loading size="md" />
 								<Loading size="lg" />
+								<Loading size="xl" />
 							</div>
 						</div>
 
@@ -1015,14 +996,16 @@ export function StyleTestPage() {
 								<Badge variant="danger" text="Game Over" />
 								<Badge variant="warning" text="Time Running Out" />
 								<Badge text="Your Turn" />
-								<Badge text="Default" />
+								<Badge variant="neutral" text="Neutral" />
 							</div>
 
 							<h4 style={{ marginTop: "1.5rem" }}>Outline Badges</h4>
 							<div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", margin: "1rem 0", alignItems: "center" }}>
 								<Badge type="outline" variant="success" text="Winner" />
 								<Badge type="outline" variant="danger" text="Check" />
+								<Badge type="outline" variant="warning" text="Warning" />
 								<Badge type="outline" text="Spectating" />
+								<Badge type="outline" variant="neutral" text="Neutral" />
 							</div>
 						</div>
 
@@ -1032,6 +1015,7 @@ export function StyleTestPage() {
 							<Alert variant="warning" title="Time Warning" message="You have less than 2 minutes remaining." />
 							<Alert variant="danger" title="Check!" message="You are in check! Make a move to escape." />
 							<Alert variant="info" title="Information" message="It's your turn to move." />
+							<Alert variant="neutral" title="Neutral" message="This is a neutral alert." />
 						</div>
 					</div>
 				</section>
@@ -1081,130 +1065,75 @@ export function StyleTestPage() {
 						</div>
 					</div>
 				</section>
-				{/* Color System */}
-				<section className="section">
-					<h2>Color System</h2>
-					<div className="color-palette">
-						<div className="color-card primary">
-							Primary
-							<br />
-							#3b82f6
-						</div>
-						<div className="color-card secondary">
-							Secondary
-							<br />
-							#1e40af
-						</div>
-						<div className="color-card accent">
-							Accent
-							<br />
-							#93c5fd
-						</div>
-						<div className="color-card neutral">
-							Neutral
-							<br />
-							#8b949e
-						</div>
-						<div className="color-card success">
-							Success
-							<br />
-							#22c55e
-						</div>
-						<div className="color-card danger">
-							Danger
-							<br />
-							#ef4444
-						</div>
-						<div className="color-card warning">
-							Warning
-							<br />
-							#fbbf24
-						</div>
-					</div>
-				</section>
-				<footer className="section">
-					<p>
-						This comprehensive component library provides all the building blocks needed for your Chess Variant
-						Simulator interface.
-					</p>
-				</footer>
 			</div>
-
 			{/* Notification Container */}
 			<div className="notification-container" id="notification-container"></div>
-
 			{/* Demo Modals */}
 			{showDemoModal && (
-				<div className="modal-overlay" style={{ display: "flex" }}>
-					<Modal
-						id="demo-modal"
-						title="Game Settings"
-						footer={
-							<div>
-								<Button variant="secondary" onClick={() => closeModal(setShowDemoModal)} text="Cancel" />
-								<Button variant="primary" style={{ marginLeft: "1rem" }} text="Save Settings" />
-							</div>
-						}
-					>
-						<p>Configure your game settings and preferences.</p>
-						<FormGroup label="Time Control">
-							<select className="form-control">
-								<option>5 minutes</option>
-								<option>10 minutes</option>
-								<option>30 minutes</option>
-							</select>
-						</FormGroup>
-						<FormGroup label="Game Variant">
-							<select className="form-control">
-								<option>Standard Chess</option>
-								<option>King of the Hill</option>
-								<option>Three-Check</option>
-								<option>Atomic Chess</option>
-							</select>
-						</FormGroup>
-					</Modal>
-				</div>
-			)}
-
+				<Modal
+					id="demo-modal"
+					title="Game Settings"
+					onClose={() => closeModal(setShowDemoModal)}
+					footer={
+						<div>
+							<Button variant="secondary" onClick={() => closeModal(setShowDemoModal)} text="Cancel" />
+							<Button variant="primary" style={{ marginLeft: "1rem" }} text="Save Settings" />
+						</div>
+					}
+				>
+					<p>Configure your game settings and preferences.</p>
+					<FormGroup label="Time Control">
+						<Dropdown
+							options={modalTimeControlOptions}
+							value={modalTimeControl}
+							onChange={(value) => setModalTimeControl(value)}
+						/>
+					</FormGroup>
+					<FormGroup label="Game Variant">
+						<Dropdown
+							options={modalGameVariantOptions}
+							value={modalGameVariant}
+							onChange={(value) => setModalGameVariant(value)}
+						/>
+					</FormGroup>
+				</Modal>
+			)}{" "}
 			{showInfoModal && (
-				<div className="modal-overlay" style={{ display: "flex" }}>
-					<Modal
-						id="info-modal"
-						title="Game Information"
-						footer={<Button variant="primary" onClick={() => closeModal(setShowInfoModal)} text="Got it!" />}
-					>
-						<p>Learn about the current chess variant and its rules.</p>
-						<h4>King of the Hill</h4>
-						<p>Win by getting your king to the center four squares (d4, d5, e4, e5) or by traditional checkmate.</p>
-						<Alert
-							variant="info"
-							title="Pro Tip"
-							message="Control the center early to limit your opponent's king mobility."
-						/>
-					</Modal>
-				</div>
+				<Modal
+					id="info-modal"
+					title="Game Information"
+					onClose={() => closeModal(setShowInfoModal)}
+					footer={<Button variant="primary" onClick={() => closeModal(setShowInfoModal)} text="Got it!" />}
+				>
+					<p>Learn about the current chess variant and its rules.</p>
+					<h4>King of the Hill</h4>
+					<p>Win by getting your king to the center four squares (d4, d5, e4, e5) or by traditional checkmate.</p>
+					<Alert
+						variant="info"
+						title="Pro Tip"
+						message="Control the center early to limit your opponent's king mobility."
+					/>
+				</Modal>
 			)}
-
 			{showConfirmModal && (
-				<div className="modal-overlay" style={{ display: "flex" }}>
-					<Modal
-						id="confirm-modal"
-						title="Resign Game"
-						footer={
-							<div>
-								<Button variant="secondary" onClick={() => closeModal(setShowConfirmModal)} text="Cancel" />
-								<Button variant="danger" style={{ marginLeft: "1rem" }} text="Yes, Resign" />
-							</div>
-						}
-					>
-						<Alert
-							variant="warning"
-							title="Are you sure?"
-							message="This action cannot be undone. You will lose this game."
-						/>
-						<p>Do you really want to resign from this game?</p>
-					</Modal>
-				</div>
+				<Modal
+					id="confirm-modal"
+					title="Resign Game"
+					onClose={() => closeModal(setShowConfirmModal)}
+					footer={
+						<div>
+							<Button variant="secondary" onClick={() => closeModal(setShowConfirmModal)} text="Cancel" />
+							<Button variant="danger" style={{ marginLeft: "1rem" }} text="Yes, Resign" />
+						</div>
+					}
+				>
+					<Alert
+						variant="warning"
+						title="Are you sure?"
+						message="This action cannot be undone. You will lose this game."
+					/>
+					<p>Do you really want to resign from this game?</p>
+				</Modal>
 			)}
 		</div>
 	);
