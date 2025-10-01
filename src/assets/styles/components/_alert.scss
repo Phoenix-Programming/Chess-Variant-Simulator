@@ -1,4 +1,4 @@
-@import "../abstracts/variables";
+@use "../abstracts/variables" as *;
 
 .alert {
 	position: relative;
@@ -29,6 +29,12 @@
 		background-color: rgba($primary-color, 0.1);
 		border-color: rgba($primary-color, 0.3);
 		color: $primary-color;
+	}
+
+	&.alert--neutral {
+		background-color: rgba($neutral-color, 0.1);
+		border-color: rgba($neutral-color, 0.3);
+		color: $text-primary-color;
 	}
 
 	.alert-title {
