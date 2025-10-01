@@ -1,10 +1,11 @@
-@import '../abstracts/variables';
+@use "../abstracts/variables" as *;
+@use "sass:color";
 
-html {
-  box-sizing: border-box;
-}
+html { box-sizing: border-box; }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	box-sizing: inherit;
 }
 
@@ -22,31 +23,37 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 	line-height: 1.25;
 	color: $text-primary-color;
+	font-family: $font-sans;
 }
 
 p {
 	margin-bottom: $spacing-md;
+	font-family: $font-sans;
 }
 
 a {
 	color: $primary-color;
 	text-decoration: none;
 	transition: color 0.2s ease;
+	font-family: $font-sans;
 
 	&:hover,
 	&:focus {
-		color: darken($primary-color, 10%);
+		color: color.adjust($primary-color, $lightness: -10%);
 		text-decoration: underline;
 	}
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
 	border: 1px solid $border-primary-color;
 	border-radius: $border-radius-md;
 	padding: $spacing-sm;
 	width: 100%;
 	background-color: $background-alt;
 	color: $text-primary-color;
+	font-family: $font-sans;
 }
 
 input:focus,
@@ -62,6 +69,7 @@ button {
 	border-radius: $border-radius-sm;
 	padding: $spacing-sm $spacing-md;
 	transition: background-color 0.2s ease, transform 0.1s ease;
+	font-family: $font-sans;
 
 	&:disabled {
 		opacity: 0.6;
@@ -69,9 +77,16 @@ button {
 	}
 }
 
-img, video {
+img,
+video {
 	max-width: 100%;
 	height: auto;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
 }
 
 .hidden {
