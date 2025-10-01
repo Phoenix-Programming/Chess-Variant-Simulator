@@ -1,5 +1,5 @@
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 .modal-overlay {
 	position: fixed;
@@ -11,15 +11,12 @@
 	backdrop-filter: blur(3px);
 	@include flex-center;
 	z-index: 1000;
-	opacity: 0;
-	visibility: hidden;
+	opacity: 1;
+	visibility: visible;
 	transition: opacity $transition-fast, visibility $transition-fast;
-	display: none;
+	animation: modalFadeIn $transition-fast ease-out;
 
-	&.modal-open {
-		opacity: 1;
-		visibility: visible;
-	}
+	animation: modalFadeIn $transition-fast ease-out;
 
 	.modal {
 		background-color: $background-alt;
@@ -30,10 +27,9 @@
 		max-height: 80vh;
 		overflow-y: auto;
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-		transform: scale(0.9) translateY(-20px);
+		transform: scale(1) translateY(0);
 		transition: transform $transition-fast;
-
-		.modal-open & { transform: scale(1) translateY(0); }
+		animation: modalSlideIn $transition-fast ease-out;
 
 		&.modal--sm { max-width: 300px; }
 
@@ -92,8 +88,7 @@
 
 				img {
 					opacity: 1;
-					filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%)
-						contrast(97%); // Danger color
+					filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); // Danger color
 				}
 			}
 		}
@@ -109,5 +104,22 @@
 		justify-content: flex-end;
 		padding: $spacing-md $spacing-lg;
 		border-top: 1px solid $border-primary-color;
+	}
+}
+
+// Modal animations
+@keyframes modalFadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+	from {
+		transform: scale(0.9) translateY(-20px);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1) translateY(0);
+		opacity: 1;
 	}
 }
