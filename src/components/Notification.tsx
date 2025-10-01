@@ -119,9 +119,7 @@ function getNotificationIcon(type: NotificationType): React.JSX.Element {
 					alt="Success"
 					width="20"
 					height="20"
-					style={{
-						filter: "brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(91%)"
-					}}
+					className="notification-icon--success"
 				/>
 			);
 		case "danger":
@@ -131,9 +129,7 @@ function getNotificationIcon(type: NotificationType): React.JSX.Element {
 					alt="Error"
 					width="20"
 					height="20"
-					style={{
-						filter: "brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%)"
-					}}
+					className="notification-icon--error"
 				/>
 			);
 		case "warning":
@@ -143,9 +139,7 @@ function getNotificationIcon(type: NotificationType): React.JSX.Element {
 					alt="Warning"
 					width="20"
 					height="20"
-					style={{
-						filter: "brightness(0) saturate(100%) invert(84%) sepia(84%) saturate(2500%) hue-rotate(2deg) brightness(101%) contrast(107%)"
-					}}
+					className="notification-icon--warning"
 				/>
 			);
 		case "info":
@@ -156,9 +150,7 @@ function getNotificationIcon(type: NotificationType): React.JSX.Element {
 					alt="Info"
 					width="20"
 					height="20"
-					style={{
-						filter: "brightness(0) saturate(100%) invert(45%) sepia(62%) saturate(4547%) hue-rotate(211deg) brightness(100%) contrast(91%)"
-					}}
+					className="notification-icon--info"
 				/>
 			);
 	}
