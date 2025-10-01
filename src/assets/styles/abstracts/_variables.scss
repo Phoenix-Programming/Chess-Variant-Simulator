@@ -29,6 +29,17 @@ $success: #22c55e;
 $danger: #ef4444;
 $warning: #fbbf24;
 
+// Main Color Filters
+$primary-color-filter: brightness(0) saturate(100%) invert(40%) sepia(54%) saturate(2360%) hue-rotate(203deg) brightness(101%) contrast(93%);
+$secondary-color-filter: brightness(0) saturate(100%) invert(19%) sepia(85%) saturate(2523%) hue-rotate(222deg) brightness(86%) contrast(96%);
+$accent-color-filter: brightness(0) saturate(100%) invert(71%) sepia(58%) saturate(585%) hue-rotate(183deg) brightness(101%) contrast(98%);
+$neutral-color-filter: brightness(0) saturate(100%) invert(64%) sepia(17%) saturate(204%) hue-rotate(171deg) brightness(89%) contrast(89%);
+
+// Status Color Filters
+$success-filter: brightness(0) saturate(100%) invert(61%) sepia(21%) saturate(1514%) hue-rotate(89deg) brightness(97%) contrast(93%);;
+$danger-filter: brightness(0) saturate(100%) invert(34%) sepia(19%) saturate(7416%) hue-rotate(339deg) brightness(101%) contrast(88%);;
+$warning-filter: brightness(0) saturate(100%) invert(79%) sepia(84%) saturate(560%) hue-rotate(332deg) brightness(96%) contrast(106%);;
+
 // Fonts
 $font-sans: Arial, sans-serif;
 $font-mono: Courier, monospace;
