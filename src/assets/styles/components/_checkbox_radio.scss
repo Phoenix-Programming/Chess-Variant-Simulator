@@ -27,14 +27,11 @@
 			border-color: $primary-color;
 
 			&::before {
-				content: "✓";
+				content: url("@icons/check.svg");
 				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				color: white;
-				font-size: 0.75rem;
-				font-weight: bold;
+				transform: translate(-40%, -40%) scale(0.75);
+				width: 0.75rem;
+				height: 0.75rem;
 			}
 		}
 
