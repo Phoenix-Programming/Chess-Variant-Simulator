@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_progress.scss";
+import "../assets/styles/main.scss";
 
 type ProgressProps = React.HTMLAttributes<HTMLDivElement> & {
 	type?: "solid" | "striped";
@@ -23,20 +23,9 @@ export function Progress({
 	const percentage: number = Math.min(Math.max((value / max) * 100, 0), 100);
 
 	return (
-		<div
-			className={classNames(
-				"progress",
-				`progress--${size}`,
-				className
-			)}
-			{...props}
-		>
+		<div className={classNames("progress", `progress--${size}`, className)} {...props}>
 			<div
-				className={classNames(
-					"progress-bar",
-					type !== "solid" && `progress--${type}`,
-					`progress--${variant}`
-				)}
+				className={classNames("progress-bar", type !== "solid" && `progress--${type}`, `progress--${variant}`)}
 				style={{ width: `${percentage}%` }}
 			/>
 		</div>

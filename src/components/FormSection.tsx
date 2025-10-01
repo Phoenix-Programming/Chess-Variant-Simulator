@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_form.scss"
+import "../assets/styles/main.scss";
 
 type FormSectionProps = React.HTMLAttributes<HTMLDivElement> & {
 	title: string;
@@ -9,7 +9,7 @@ type FormSectionProps = React.HTMLAttributes<HTMLDivElement> & {
 	defaultExpanded?: boolean;
 	children: React.ReactNode;
 	className?: string;
-}
+};
 
 export function FormSection({
 	title,
@@ -21,9 +21,18 @@ export function FormSection({
 	...props
 }: FormSectionProps): React.JSX.Element {
 	const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+	const [isCollapsing, setIsCollapsing] = useState(false);
 
 	const toggleExpanded = () => {
-		if (collapsible) setIsExpanded(!isExpanded);
+		if (!collapsible) return;
+
+		if (isExpanded) {
+			setIsCollapsing(true);
+			setTimeout(() => {
+				setIsExpanded(false);
+				setIsCollapsing(false);
+			}, 200);
+		} else setIsExpanded(true);
 	};
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -38,7 +47,8 @@ export function FormSection({
 			className={classNames(
 				"form-section",
 				collapsible && "form-section--collapsible",
-				!isExpanded && "form-section--collapsed",
+				!isExpanded && !isCollapsing && "form-section--collapsed",
+				isCollapsing && "form-section--collapsing",
 				className
 			)}
 			{...props}
@@ -53,17 +63,11 @@ export function FormSection({
 			>
 				<div className="form-section-header-content">
 					<h3 className="form-section-title">{title}</h3>
-					{subtitle && (
-						<p className="form-section-subtitle">{subtitle}</p>
-					)}
+					{subtitle && <p className="form-section-subtitle">{subtitle}</p>}
 				</div>
-				{collapsible && (
-					<span className="form-section-toggle">{isExpanded ? "-" : "+"}</span>
-				)}
+				{collapsible && <span className="form-section-toggle">{isExpanded && !isCollapsing ? "-" : "+"}</span>}
 			</div>
-			{isExpanded && (
-				<div className="form-section-content">{children}</div>
-			)}
+			{(isExpanded || isCollapsing) && <div className="form-section-content">{children}</div>}
 		</div>
 	);
 }

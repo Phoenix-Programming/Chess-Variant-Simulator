@@ -1,13 +1,13 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_checkbox_&_radio.scss";
+import "../assets/styles/main.scss";
 
 type CheckboxOption = {
 	id: string;
 	label: string;
 	description?: string;
 	disabled?: boolean;
-}
+};
 
 type CheckboxProps = {
 	name: string;
@@ -18,7 +18,7 @@ type CheckboxProps = {
 	layout?: "vertical" | "horizontal" | "grid";
 	disabled?: boolean;
 	className?: string;
-}
+};
 
 export function CheckboxList({
 	name,
@@ -26,24 +26,17 @@ export function CheckboxList({
 	options,
 	values,
 	onChange,
-	layout = 'vertical',
+	layout = "vertical",
 	disabled = false,
 	className
 }: CheckboxProps): React.JSX.Element {
 	const handleChange = (optionId: string, checked: boolean) => {
 		if (checked) onChange([...values, optionId]);
-		else onChange(values.filter(v => v !== optionId));
+		else onChange(values.filter((v) => v !== optionId));
 	};
 
 	return (
-		<fieldset
-			className={classNames(
-				"checkbox-list",
-				`checkbox-list--${layout}`,
-				className
-			)}
-			disabled={disabled}
-		>
+		<fieldset className={classNames("checkbox-list", `checkbox-list--${layout}`, className)} disabled={disabled}>
 			<legend className="checkbox-list-legend">{legend}</legend>
 			<div className="checkbox-list-items">
 				{options.map((option) => (
@@ -59,9 +52,7 @@ export function CheckboxList({
 						<label className="form-check-label" htmlFor={`${name}-${option.id}`}>
 							{option.label}
 						</label>
-						{option.description && (
-							<div className="form-check-description">{option.description}</div>
-						)}
+						{option.description && <div className="form-check-description">{option.description}</div>}
 					</div>
 				))}
 			</div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { FormGroup } from "./FormGroup.js";
-import "../assets/styles/components/_form.scss"
+import "../assets/styles/main.scss";
 
 type FormTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
 	label?: string;
@@ -11,7 +11,7 @@ type FormTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
 	autoResize?: boolean;
 	maxLength?: number;
 	showCount?: boolean;
-}
+};
 
 export function FormTextarea({
 	label,
@@ -33,7 +33,7 @@ export function FormTextarea({
 		if (autoResize && textareaRef.current) {
 			const textarea = textareaRef.current;
 			textarea.style.height = "auto";
-			textarea.style.height = `${textarea.scrollHeight}px`
+			textarea.style.height = `${textarea.scrollHeight}px`;
 		}
 	}, [value, autoResize]);
 
@@ -46,11 +46,7 @@ export function FormTextarea({
 		onChange?.(e);
 	};
 
-	const textareaClasses = classNames(
-		"form-control",
-		error && "has-error",
-		className
-	);
+	const textareaClasses = classNames("form-control", error && "has-error", className);
 
 	const isOverLimit = maxLength && charCount > maxLength;
 
@@ -66,12 +62,9 @@ export function FormTextarea({
 				{...props}
 			/>
 			{(showCount || maxLength) && (
-				<div className={classNames(
-					"form-char-count",
-					isOverLimit && "form-char-count--error"
-				)}>
+				<div className={classNames("form-char-count", isOverLimit && "form-char-count--error")}>
 					{showCount && <span>{charCount}</span>}
-					[maxLength && <span>{maxLength}</span>]
+					{maxLength && <span>/{maxLength}</span>}
 				</div>
 			)}
 		</div>
@@ -88,11 +81,8 @@ export function FormTextarea({
 	}
 
 	return (
-		<FormGroup
-			label={label}
-			className={error ? "has-error" : undefined}
-		>
-			{textareaClasses}
+		<FormGroup label={label} className={error ? "has-error" : undefined}>
+			{textareaElement}
 			{error && <div className="form-feedback danger">{error}</div>}
 			{helpText && <div className="form-help">{helpText}</div>}
 		</FormGroup>

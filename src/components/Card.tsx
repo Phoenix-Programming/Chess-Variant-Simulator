@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "../assets/styles/components/_card.scss";
+import "../assets/styles/main.scss";
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
 	compact?: boolean;
@@ -35,29 +35,27 @@ export function Card({
 			)}
 			{...props}
 		>
-			{header && <div
-				className={classNames(
-					"card__header",
-					{
+			{header && (
+				<div
+					className={classNames("card__header", {
 						"card--compact": compact,
 						"card--interactive": interactive
-					},
-				)}
-			>
-				{header}
-			</div>}
+					})}
+				>
+					{header}
+				</div>
+			)}
 			<div className="card__body">{children}</div>
-			{footer && <div
-				className={classNames(
-					"card__footer",
-					{
+			{footer && (
+				<div
+					className={classNames("card__footer", {
 						"card--compact": compact,
 						"card--interactive": interactive
-					},
-				)}
-			>
-				{footer}
-			</div>}
+					})}
+				>
+					{footer}
+				</div>
+			)}
 		</div>
 	);
 }
