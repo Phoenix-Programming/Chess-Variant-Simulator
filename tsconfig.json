@@ -5,6 +5,12 @@
 		{ "path": "./tsconfig.server.json" }
 	],
 	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"],
+			"@public/*": ["public/*"],
+			"@icons/*": ["public/icons/*"]
+		},
 		"sourceMap": true,
 		"strict": true
 	}
