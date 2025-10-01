@@ -1,5 +1,5 @@
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 @mixin _notification-type($color) {
 	border-left: 4px solid $color;
@@ -12,7 +12,7 @@
 	top: $spacing-lg;
 	right: $spacing-lg;
 	z-index: 1050;
-	max-width: 350px;
+	width: 350px;
 }
 
 .notification {
@@ -25,10 +25,12 @@
 	opacity: 0;
 	transition: opacity 0.3s ease, transform 0.3s ease;
 	animation: _slideInNotification 0.3s ease forwards;
+	width: 100%;
+	min-height: auto;
 
 	&.notification--success { @include _notification-type($success); }
 
-	&.notification--error { @include _notification-type($danger); }
+	&.notification--danger { @include _notification-type($danger); }
 
 	&.notification--warning { @include _notification-type($warning); }
 
@@ -57,16 +59,22 @@
 
 		.notification-body {
 			flex: 1;
+			min-width: 0; // Allows flex item to shrink below content size
+			word-wrap: break-word;
+			overflow-wrap: break-word;
 
 			.notification-title {
 				font-weight: $font-weight-medium;
 				color: $text-primary-color;
 				margin-bottom: $spacing-sm * 0.5;
+				word-wrap: break-word;
 			}
 
 			.notification-message {
 				color: $text-secondary-color;
 				font-size: $font-size-sm;
+				word-wrap: break-word;
+				line-height: 1.4;
 			}
 		}
 
@@ -89,9 +97,7 @@
 				transition: opacity $transition-fast;
 			}
 
-			&:hover img {
-				opacity: 1;
-			}
+			&:hover img { opacity: 1; }
 		}
 	}
 }
