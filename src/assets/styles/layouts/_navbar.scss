@@ -12,52 +12,63 @@
 		padding: 0 $spacing-md;
 		@include flex-between;
 		align-items: center;
-	}
 
-	.navbar-brand {
-		font-size: $font-size-lg;
-		font-weight: $font-weight-bold;
-		color: $text-primary-color;
-		text-decoration: none;
+		.navbar-brand {
+			display: flex;
+			align-items: center;
 
-		&:hover {
-			color: $primary-color;
-			text-decoration: none;
-		}
-	}
-
-	.navbar-nav {
-		@include flex-gap($spacing-lg);
-		align-items: center;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-
-		@include respond(sm) {
-			flex-direction: column;
-			gap: $spacing-md;
-		}
-	}
-
-	.navbar-item {
-		.navbar-link {
-			color: $text-secondary-color;
-			text-decoration: none;
-			font-weight: $font-weight-medium;
-			padding: $spacing-sm $spacing-md;
-			border-radius: $border-radius-sm;
-			transition: all $transition-super-fast;
-
-			&:hover,
-			&:focus {
-				color: $primary-color;
-				background-color: rgba($primary-color, 0.1);
-				text-decoration: none;
+			.navbar-brand-icon {
+				width: 32px;
+				height: 32px;
+				margin-right: 0.75rem;
 			}
 
-			&.active {
-				color: $primary-color;
-				background-color: rgba($primary-color, 0.15);
+			.navbar-brand-text {
+				font-size: $font-size-lg;
+				font-weight: $font-weight-bold;
+				color: $text-primary-color;
+				margin: 0;
+			}
+
+			&:hover {
+				filter: $primary-color-filter;
+				text-decoration: none;
+			}
+		}
+
+		.navbar-nav {
+			@include flex-gap($spacing-lg);
+			align-items: center;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			@include respond(sm) {
+				flex-direction: column;
+				gap: $spacing-md;
+			}
+
+			.navbar-item {
+				.navbar-link {
+					color: $text-secondary-color;
+					text-decoration: none;
+					font-weight: $font-weight-medium;
+					padding: $spacing-sm $spacing-md;
+					border-radius: $border-radius-sm;
+					transition: all $transition-super-fast;
+
+					&:hover,
+					&:focus {
+						color: $primary-color;
+						background-color: rgba($primary-color, 0.1);
+						text-decoration: none;
+					}
+
+					&.active {
+						color: $primary-color;
+						background-color: rgba($primary-color, 0.15);
+					}
+				}
 			}
 		}
 	}

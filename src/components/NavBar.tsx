@@ -13,12 +13,13 @@ type NavBarProps = {
 		text: string;
 		href: string;
 	};
+	brandIcon?: string;
 	items: NavItem[];
 	onItemClick?: (href: string) => void;
 	className?: string;
 };
 
-export function NavBar({ brand, items, onItemClick, className }: NavBarProps): React.JSX.Element {
+export function NavBar({ brand, brandIcon, items, onItemClick, className }: NavBarProps): React.JSX.Element {
 	const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
 		if (onItemClick) {
 			e.preventDefault();
@@ -29,7 +30,10 @@ export function NavBar({ brand, items, onItemClick, className }: NavBarProps): R
 	return (
 		<nav className={classNames("navbar", className)}>
 			<div className="navbar-container">
-				<a href={brand.href} className="navbar-brand">{brand.text}</a>
+				<a className="navbar-brand" href={brand.href}>
+					{brandIcon && <img src={brandIcon} className="navbar-brand-icon" />}
+					<p className="navbar-brand-text">{brand.text}</p>
+				</a>
 				<ul className="navbar-nav">
 					{items.map((item, index) => (
 						<li key={item.href || index} className="navbar-item">

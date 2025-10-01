@@ -18,9 +18,11 @@ import { NotificationManager } from "../components/Notification.js";
 import { Progress } from "../components/Progress.js";
 import { Radio } from "../components/Radio.js";
 import { Toggle } from "../components/Toggle.js";
+import { NavBar } from "../components/NavBar.js";
 
 import PersonIcon from "@icons/person.svg";
 import SearchIcon from "@icons/search.svg";
+import KnightIcon from "@icons/knight.svg";
 
 export function StyleTestPage() {
 	const [showDemoModal, setShowDemoModal] = useState(false);
@@ -491,35 +493,17 @@ export function StyleTestPage() {
         }*/
       `}</style>
 			{/* Navigation Demo */}
-			<nav className="navbar">
-				<div className="navbar-container">
-					<a href="#" className="navbar-brand">
-						♔ Chess Variants
-					</a>
-					<ul className="navbar-nav">
-						<li className="navbar-item">
-							<a href="#" className="navbar-link active">
-								Home
-							</a>
-						</li>
-						<li className="navbar-item">
-							<a href="#" className="navbar-link">
-								Play
-							</a>
-						</li>
-						<li className="navbar-item">
-							<a href="#" className="navbar-link">
-								Learn
-							</a>
-						</li>
-						<li className="navbar-item">
-							<a href="#" className="navbar-link">
-								Settings
-							</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
+			<NavBar
+				brand={{ text: "Chess Variant Simulator", href: "#" }}
+				brandIcon={KnightIcon}
+				items={[
+					{ label: "Home", href: "#", active: true },
+					{ label: "Play", href: "#" },
+					{ label: "Learn", href: "#" },
+					{ label: "Settings", href: "#" }
+				]}
+				onItemClick={(href) => console.log("Navigating to:", href)}
+			/>
 			<div className="container">
 				<header className="section">
 					<h1>Chess Variant Simulator - Component Library</h1>
@@ -792,10 +776,7 @@ export function StyleTestPage() {
 						<div style={{ display: "flex", gap: "2rem", alignItems: "start", flexWrap: "wrap", margin: "1rem 0" }}>
 							<div>
 								<h4>Standalone Dropdown</h4>
-								<Dropdown
-									options={chessVariants.slice(1)}
-									onChange={(value) => console.log("Selected:", value)}
-								/>
+								<Dropdown options={chessVariants.slice(1)} onChange={(value) => console.log("Selected:", value)} />
 							</div>
 							<div>
 								<h4>Disabled Dropdown</h4>
