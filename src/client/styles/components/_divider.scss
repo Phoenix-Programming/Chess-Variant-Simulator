@@ -1,0 +1,39 @@
+@use "../abstracts/variables" as *;
+
+.divider {
+	height: 1px;
+	background-color: $border-primary;
+	margin: $spacing-lg 0;
+	border: none;
+
+	&.divider-vertical {
+		width: 1px;
+		height: auto;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 $spacing-md;
+	}
+
+	&.divider-text {
+		position: relative;
+		text-align: center;
+		background: none;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background-color: $border-primary;
+		}
+
+		span {
+			background-color: $bg;
+			padding: 0 $spacing-md;
+			color: $text-tertiary;
+			font-size: $font-size-sm;
+		}
+	}
+}
