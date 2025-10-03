@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.server.tsbuildinfo",
+		"target": "ES2022",
+		"lib": ["ES2022"],
+		"module": "ESNext",
+		"skipLibCheck": true,
+		"outDir": "./dist",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"sourceMap": true
+	},
+	"include": ["src/server", "src/shared"]
+}
