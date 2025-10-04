@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { Fieldset } from "./Fieldset";
 import "../styles/main.scss";
 
 type CheckboxOption = {
@@ -36,8 +37,11 @@ export function CheckboxList({
 	};
 
 	return (
-		<fieldset className={classNames("checkbox-list", `checkbox-list--${layout}`, className)} disabled={disabled}>
-			<legend className="checkbox-list-legend">{legend}</legend>
+		<Fieldset
+			legend={legend}
+			className={classNames("checkbox-list", `checkbox-list--${layout}`, className)}
+			disabled={disabled}
+		>
 			<div className="checkbox-list-items">
 				{options.map((option) => (
 					<div key={option.id} className="form-check">
@@ -56,6 +60,6 @@ export function CheckboxList({
 					</div>
 				))}
 			</div>
-		</fieldset>
+		</Fieldset>
 	);
 }
