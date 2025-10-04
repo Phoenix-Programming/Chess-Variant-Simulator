@@ -24,6 +24,10 @@ export default [
 			...reactHooks.configs.recommended.rules,
 			"no-unused-vars": "off",
 			"@typescript-eslint/no-unused-vars": "warn"
+		},
+		"env": {
+			"node": true,
+			"es2022": true
 		}
 	}
 ];

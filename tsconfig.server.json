@@ -12,5 +12,5 @@
 		"declaration": true,
 		"sourceMap": true
 	},
-	"include": ["src/server", "src/shared"]
+	"include": ["src/server", "src/shared", "vite-env.d.ts"]
 }
