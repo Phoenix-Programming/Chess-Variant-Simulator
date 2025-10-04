@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import "../styles/main.scss";
+import ExpandIcon from "@icons/add.svg";
+import CollapseIcon from "@icons/remove.svg";
 
 type FormSectionProps = React.HTMLAttributes<HTMLDivElement> & {
 	title: string;
@@ -8,7 +10,6 @@ type FormSectionProps = React.HTMLAttributes<HTMLDivElement> & {
 	collapsible?: boolean;
 	defaultExpanded?: boolean;
 	children: React.ReactNode;
-	className?: string;
 };
 
 export function FormSection({
@@ -65,7 +66,15 @@ export function FormSection({
 					<h3 className="form-section-title">{title}</h3>
 					{subtitle && <p className="form-section-subtitle">{subtitle}</p>}
 				</div>
-				{collapsible && <span className="form-section-toggle">{isExpanded && !isCollapsing ? "-" : "+"}</span>}
+				{collapsible && (
+					<span className="form-section-toggle">
+						{isExpanded && !isCollapsing ? (
+							<img src={CollapseIcon} alt="Collapse" className="form-section-toggle-icon" />
+						) : (
+							<img src={ExpandIcon} alt="Expand" className="form-section-toggle-icon" />
+						)}
+					</span>
+				)}
 			</div>
 			{(isExpanded || isCollapsing) && <div className="form-section-content">{children}</div>}
 		</div>
