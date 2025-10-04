@@ -11,7 +11,6 @@ export type DropdownOption = {
 type DropdownProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
 	options: DropdownOption[];
 	onChange?: (value: string) => void;
-	className?: string;
 };
 
 export function Dropdown({
@@ -27,10 +26,18 @@ export function Dropdown({
 		onChange?.(selectedValue);
 	};
 
-	const dropdownClasses = classNames("dropdown", { "dropdown--disabled": disabled }, className);
-
 	return (
-		<select className={dropdownClasses} value={value || ""} disabled={disabled} onChange={handleChange} {...props}>
+		<select
+			className={classNames(
+				"dropdown",
+				{ "dropdown--disabled": disabled },
+				className
+			)}
+			value={value || ""}
+			disabled={disabled}
+			onChange={handleChange}
+			{...props}
+		>
 			{options.map((option) => (
 				<option key={option.value} value={option.value} disabled={option.disabled}>
 					{option.label}
