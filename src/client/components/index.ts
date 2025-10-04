@@ -19,5 +19,3 @@ export { Notification, NotificationManager } from "./Notification";
 export { Progress } from "./Progress";
 export { Radio } from "./Radio";
 export { Toggle } from "./Toggle";
-
-export { StyleTestPage } from "../pages/StyleTestPage";
