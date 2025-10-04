@@ -8,7 +8,6 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 	size?: "sm" | "md" | "lg" | "pill" | "icon-sm" | "icon-lg" | "block";
 	text?: string;
 	children?: React.ReactNode;
-	className?: string;
 };
 
 export function Button({

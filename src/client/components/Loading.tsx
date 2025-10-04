@@ -5,7 +5,6 @@ import "../styles/main.scss";
 type LoadingProps = React.HTMLAttributes<HTMLDivElement> & {
 	size?: "sm" | "md" | "lg" | "xl";
 	overlay?: "area" | "fullscreen";
-	className?: string;
 };
 
 export function Loading({ size = "sm", overlay = "area", className, ...props }: LoadingProps): React.JSX.Element {

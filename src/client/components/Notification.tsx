@@ -15,7 +15,6 @@ type NotificationProps = React.HTMLAttributes<HTMLDivElement> & {
 	title: string;
 	message: string;
 	onClose?: () => void;
-	className?: string;
 };
 
 export function Notification({

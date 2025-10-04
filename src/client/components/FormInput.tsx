@@ -4,7 +4,6 @@ import "../styles/main.scss";
 
 type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 	icon?: React.ReactNode;
-	className?: string;
 };
 
 export function FormInput({ icon, className, ...props }: FormInputProps): React.JSX.Element {

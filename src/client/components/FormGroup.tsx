@@ -4,14 +4,16 @@ import "../styles/main.scss";
 
 type FormGroupProps = React.HTMLAttributes<HTMLDivElement> & {
 	label?: string;
+	htmlFor?: string;
 	children: React.ReactNode;
-	className?: string;
 };
 
-export function FormGroup({ label, children, className, ...props }: FormGroupProps): React.JSX.Element {
+export function FormGroup({ label, htmlFor, children, className, ...props }: FormGroupProps): React.JSX.Element {
 	return (
 		<div className={classNames("form-group", className)} {...props}>
-			{label && <label className="form-label">{label}</label>}
+			{label && (
+				<label className="form-label" htmlFor={htmlFor}>{label}</label>
+			)}
 			{children}
 		</div>
 	);

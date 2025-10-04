@@ -9,7 +9,6 @@ type ToggleProps = React.HTMLAttributes<HTMLDivElement> & {
 	onChange: (checked: boolean) => void;
 	disabled?: boolean;
 	labelPosition?: "before" | "after";
-	className?: string;
 };
 
 export function Toggle({

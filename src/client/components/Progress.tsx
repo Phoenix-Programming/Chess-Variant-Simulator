@@ -8,7 +8,6 @@ type ProgressProps = React.HTMLAttributes<HTMLDivElement> & {
 	size?: "sm" | "lg";
 	value?: number;
 	max?: number;
-	className?: string;
 };
 
 export function Progress({

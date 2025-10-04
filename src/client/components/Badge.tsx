@@ -6,7 +6,6 @@ type BadgeProps = React.HTMLAttributes<HTMLSpanElement> & {
 	type?: "solid" | "outline";
 	variant?: "primary" | "neutral" | "success" | "warning" | "danger";
 	text: string;
-	className?: string;
 };
 
 export function Badge({

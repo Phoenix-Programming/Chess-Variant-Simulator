@@ -5,7 +5,7 @@ import "../styles/main.scss";
 type FieldsetProps = React.HTMLAttributes<HTMLFieldSetElement> & {
 	legend: string;
 	children: React.ReactNode;
-	className?: string;
+	disabled?: boolean;
 };
 
 export function Fieldset({ legend, children, className, ...props }: FieldsetProps): React.JSX.Element {

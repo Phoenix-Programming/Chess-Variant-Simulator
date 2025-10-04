@@ -9,7 +9,6 @@ type CardProps = React.HTMLAttributes<HTMLDivElement> & {
 	header?: React.ReactNode;
 	footer?: React.ReactNode;
 	children: React.ReactNode; //body
-	className?: string;
 };
 
 export function Card({

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useId } from "react";
 import classNames from "classnames";
 import { FormGroup } from "./FormGroup";
 import "../styles/main.scss";
@@ -24,10 +24,13 @@ export function FormTextarea({
 	className,
 	onChange,
 	value,
+	id,
 	...props
 }: FormTextareaProps): React.JSX.Element {
 	const [charCount, setCharCount] = useState(0);
 	const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+	const generatedId = useId();
+	const textareaId = id || generatedId;
 
 	useEffect(() => {
 		if (autoResize && textareaRef.current) {
@@ -54,6 +57,7 @@ export function FormTextarea({
 		<div className="form-textarea-wrapper">
 			<textarea
 				ref={textareaRef}
+				id={textareaId}
 				className={textareaClasses}
 				maxLength={maxLength}
 				value={value}
@@ -81,7 +85,7 @@ export function FormTextarea({
 	}
 
 	return (
-		<FormGroup label={label} className={error ? "has-error" : undefined}>
+		<FormGroup label={label} htmlFor={textareaId} className={error ? "has-error" : undefined}>
 			{textareaElement}
 			{error && <div className="form-feedback danger">{error}</div>}
 			{helpText && <div className="form-help">{helpText}</div>}

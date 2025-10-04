@@ -17,7 +17,6 @@ type RadioProps = React.HTMLAttributes<HTMLFieldSetElement> & {
 	onChange: (value: string) => void;
 	disabled?: boolean;
 	layout?: "vertical" | "horizontal";
-	className?: string;
 };
 
 export function Radio({

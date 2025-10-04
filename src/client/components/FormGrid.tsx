@@ -4,7 +4,6 @@ import "../styles/main.scss";
 
 type FormGridProps = React.HTMLAttributes<HTMLDivElement> & {
 	children: React.ReactNode;
-	className?: string;
 };
 
 export function FormGrid({ children, className, ...props }: FormGridProps): React.JSX.Element {

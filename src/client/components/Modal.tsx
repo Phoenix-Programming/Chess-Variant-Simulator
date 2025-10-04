@@ -10,7 +10,6 @@ type ModalProps = React.HTMLAttributes<HTMLDivElement> & {
 	title: string;
 	footer?: React.ReactNode;
 	children: React.ReactNode;
-	className?: string;
 	onClose?: () => void;
 };
 

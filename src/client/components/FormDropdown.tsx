@@ -8,7 +8,7 @@ type FormDropdownProps = React.ComponentProps<typeof Dropdown> & {
 	required?: boolean;
 };
 
-export function FormDropdown({ label, required, ...dropdownProps }: FormDropdownProps): React.JSX.Element {
+export function FormDropdown({ label, required = false, ...dropdownProps }: FormDropdownProps): React.JSX.Element {
 	const dropdownElement = <Dropdown {...dropdownProps} data-required={required} />;
 
 	if (!label) return dropdownElement;

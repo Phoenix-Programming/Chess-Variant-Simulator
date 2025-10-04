@@ -10,7 +10,6 @@ type AlertProps = React.HTMLAttributes<HTMLDivElement> & {
 	dismissible?: boolean;
 	show?: boolean;
 	onClose?: () => void;
-	className?: string;
 };
 
 export function Alert({
@@ -43,7 +42,11 @@ export function Alert({
 	if (!isVisible) return null;
 
 	return (
-		<div className={classNames("alert", `alert--${variant}`, isClosing && "alert-closing", className)} {...props}>
+		<div
+			role="alert"
+			className={classNames("alert", `alert--${variant}`, isClosing && "alert-closing", className)}
+			{...props}
+		>
 			{dismissible && (
 				<button className="alert-close" onClick={handleClose} aria-label="Close alert" type="button">
 					<img src={CloseIcon} alt="Close" width="20" height="20" />
