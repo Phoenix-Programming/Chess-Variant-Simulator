@@ -86,6 +86,7 @@ function showNotification(type: NotificationType, title: string, message: string
 	});
 
 	root.render(notificationElement);
+	container.appendChild(notificationWrapper);
 
 	setTimeout(() => {
 		closeNotification(notificationId);
@@ -93,61 +94,41 @@ function showNotification(type: NotificationType, title: string, message: string
 }
 
 function closeNotification(notificationId: string): void {
-	const notification: HTMLElement = document.getElementById(notificationId);
+	const notification: HTMLElement | null = document.getElementById(notificationId);
 
 	if (!notification) return;
 
-	const notificationElement: HTMLElement = notification.querySelector(".notification") as HTMLElement;
+	const notificationElement: HTMLElement | null = notification.querySelector(".notification");
 
-	notificationElement?.classList.add("notification-closing");
+	if (notificationElement) {
+		notificationElement.classList.add("notification-closing");
 
-	const reactRoot: ReactDOM.Root = notificationRoots.get(notification as HTMLElement);
-	reactRoot?.unmount();
-	notificationRoots.delete(notification as HTMLElement);
+		// Wait for animation to complete before removing from DOM
+		setTimeout(() => {
+			const reactRoot: ReactDOM.Root | undefined = notificationRoots.get(notification);
+			reactRoot?.unmount();
+			notificationRoots.delete(notification);
+			notification.remove();
+		}, 300);
+	} else {
+		// If no notification element found, clean up immediately
+		const reactRoot: ReactDOM.Root | undefined = notificationRoots.get(notification);
+		reactRoot?.unmount();
+		notificationRoots.delete(notification);
+		notification.remove();
+	}
 }
 
 function getNotificationIcon(type: NotificationType): React.JSX.Element {
 	switch (type) {
 		case "success":
-			return (
-				<img
-					src={CheckIcon}
-					alt="Success"
-					width="20"
-					height="20"
-					className="notification-icon--success"
-				/>
-			);
+			return <img src={CheckIcon} alt="Success" width="20" height="20" className="notification-icon--success" />;
 		case "danger":
-			return (
-				<img
-					src={ErrorIcon}
-					alt="Error"
-					width="20"
-					height="20"
-					className="notification-icon--error"
-				/>
-			);
+			return <img src={ErrorIcon} alt="Error" width="20" height="20" className="notification-icon--error" />;
 		case "warning":
-			return (
-				<img
-					src={WarningIcon}
-					alt="Warning"
-					width="20"
-					height="20"
-					className="notification-icon--warning"
-				/>
-			);
+			return <img src={WarningIcon} alt="Warning" width="20" height="20" className="notification-icon--warning" />;
 		case "info":
 		default:
-			return (
-				<img
-					src={InfoIcon}
-					alt="Info"
-					width="20"
-					height="20"
-					className="notification-icon--info"
-				/>
-			);
+			return <img src={InfoIcon} alt="Info" width="20" height="20" className="notification-icon--info" />;
 	}
 }
