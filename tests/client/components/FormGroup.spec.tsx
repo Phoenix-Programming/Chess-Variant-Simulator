@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { FormGroup } from "../../../src/client/components/FormGroup";
 
-describe("FromGroup component", () => {
+describe("FormGroup component", () => {
 	it("Renders with default properties", () => {
 		const text: string = "Test text";
 

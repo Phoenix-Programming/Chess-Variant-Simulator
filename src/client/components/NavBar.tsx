@@ -31,7 +31,7 @@ export function NavBar({ brand, brandIcon, items, onItemClick, className }: NavB
 		<nav className={classNames("navbar", className)}>
 			<div className="navbar-container">
 				<a className="navbar-brand" href={brand.href}>
-					{brandIcon && <img src={brandIcon} className="navbar-brand-icon" />}
+					{brandIcon && <img src={brandIcon} className="navbar-brand-icon" alt={brand.text} />}
 					<p className="navbar-brand-text">{brand.text}</p>
 				</a>
 				<ul className="navbar-nav">

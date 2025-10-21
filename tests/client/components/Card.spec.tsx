@@ -50,7 +50,7 @@ describe("Card component", () => {
 
 		expect(document.querySelector(".card__header")).toBeNull();
 		expect(document.querySelector(".card__footer")).toBeNull();
-	})
+	});
 
 	it("Applies compact and interactive classes to header, body, and footer", () => {
 		const text: string = "Test text";

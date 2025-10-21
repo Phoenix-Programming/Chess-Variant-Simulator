@@ -16,8 +16,6 @@
 	transition: opacity $transition-fast, visibility $transition-fast;
 	animation: modalFadeIn $transition-fast ease-out;
 
-	animation: modalFadeIn $transition-fast ease-out;
-
 	.modal {
 		background-color: $bg-alt;
 		border: 1px solid $border-primary;

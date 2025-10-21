@@ -18,16 +18,12 @@ export default [
 		},
 		languageOptions: {
 			ecmaVersion: 2020,
-			globals: globals.browser
+			globals: { ...globals.node, ...globals.es2020 }
 		},
 		rules: {
 			...reactHooks.configs.recommended.rules,
 			"no-unused-vars": "off",
 			"@typescript-eslint/no-unused-vars": "warn"
-		},
-		"env": {
-			"node": true,
-			"es2022": true
 		}
 	}
 ];
