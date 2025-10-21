@@ -54,7 +54,7 @@ export function Toggle({
 
 	return (
 		<>
-			{labelPosition === "before" && <label className="form-label" htmlFor={id}>{label}</label>}
+			{labelPosition === "before" && <label className="form-label" htmlFor={id} id={`${id}-label`}>{label}</label>}
 			{toggleElement}
 			{labelPosition === "after" && <label className="form-label" htmlFor={id}>{label}</label>}
 		</>

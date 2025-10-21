@@ -63,6 +63,8 @@ export const NotificationManager = {
 	}
 };
 
+const notificationRoots = new WeakMap<HTMLElement, ReturnType<typeof ReactDOM.createRoot>>();
+
 function showNotification(type: NotificationType, title: string, message: string): void {
 	const container: HTMLElement | null = document.getElementById("notification-container");
 
@@ -73,10 +75,8 @@ function showNotification(type: NotificationType, title: string, message: string
 	const notificationWrapper: HTMLDivElement = document.createElement("div");
 	notificationWrapper.id = notificationId;
 
-	container.appendChild(notificationWrapper);
-
-	const root = ReactDOM.createRoot(notificationWrapper);
-	(notificationWrapper as HTMLDivElement & { _reactRoot: typeof root })._reactRoot = root;
+	const root: ReactDOM.Root = ReactDOM.createRoot(notificationWrapper);
+	notificationRoots.set(notificationWrapper, root);
 
 	const notificationElement = React.createElement(Notification, {
 		type,
@@ -93,20 +93,17 @@ function showNotification(type: NotificationType, title: string, message: string
 }
 
 function closeNotification(notificationId: string): void {
-	const notification = document.getElementById(notificationId);
+	const notification: HTMLElement = document.getElementById(notificationId);
 
 	if (!notification) return;
 
-	const notificationElement = notification.querySelector(".notification") as HTMLElement;
+	const notificationElement: HTMLElement = notification.querySelector(".notification") as HTMLElement;
 
 	notificationElement?.classList.add("notification-closing");
 
-	setTimeout(() => {
-		const reactRoot = (notification as HTMLElement & { _reactRoot?: { unmount: () => void } })._reactRoot;
-		reactRoot?.unmount();
-
-		notification.parentNode?.removeChild(notification);
-	}, 300);
+	const reactRoot: ReactDOM.Root = notificationRoots.get(notification as HTMLElement);
+	reactRoot?.unmount();
+	notificationRoots.delete(notification as HTMLElement);
 }
 
 function getNotificationIcon(type: NotificationType): React.JSX.Element {
