@@ -17,5 +17,5 @@
 		/* Linting */
 		"noUncheckedSideEffectImports": true
 	},
-	"include": ["src/assets", "src/vite-env.d.ts", "src/shared"]
+	"include": ["src/client", "src/shared", "vite-env.d.ts"]
 }

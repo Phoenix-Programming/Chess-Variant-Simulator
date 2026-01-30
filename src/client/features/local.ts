@@ -1,5 +1,5 @@
 import { Variant } from "../../shared/variant";
-import "../styles/styles.scss";
+//import "../styles/styles.scss";
 
 const hyperChess: Variant = new Variant([]);
 
