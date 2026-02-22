@@ -1,21 +1,17 @@
 {
-	"files": [],
-	"references": [
-		{ "path": "./tsconfig.app.json" },
-		{ "path": "./tsconfig.server.json" }
-	],
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["/*"],
-			"@src/*": ["src/*"],
-			"@client/*": ["src/client/*"],
-			"@server/*": ["src/server/*"],
-			"@shared/*": ["src/shared/*"],
-			"@public/*": ["public/*"],
-			"@icons/*": ["public/icons/*"]
-		},
-		"sourceMap": true,
-		"strict": true
-	}
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ],
+  "compilerOptions": {
+    "module": "NodeNext"
+  }
 }
