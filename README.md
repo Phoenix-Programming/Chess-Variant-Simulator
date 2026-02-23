@@ -1,70 +1,137 @@
-# Chess-Variant-Simulator
+# Chess Variant Simulator
 
-This template should help get you started developing with Vue 3 in Vite.
+A web application for simulating and playing various chess variants. Built with modern web technologies to provide an interactive and educational chess experience.
 
-## Recommended IDE Setup
+## Features
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Interactive chess variant gameplay
+- Modern, responsive user interface
+- Type-safe codebase with TypeScript
+- State management with Pinia
+- Routing capabilities for multi-view application
 
-## Recommended Browser Setup
+## Tech Stack
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### Core Framework & Language
 
-## Type Support for `.vue` Imports in TS
+- **[Vue 3](https://vuejs.org/)** - Progressive JavaScript framework with Composition API
+- **[TypeScript](https://www.typescriptlang.org/)** - Static type checking and enhanced developer experience
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Build Tools & Development
 
-## Customize configuration
+- **[Vite](https://vite.dev/)** - Lightning-fast build tool and development server
+- **[Vue DevTools](https://github.com/vuejs/devtools)** - Browser extension for debugging Vue applications
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### State Management & Routing
+
+- **[Pinia](https://pinia.vuejs.org/)** - Intuitive, type-safe state management for Vue
+- **[Vue Router](https://router.vuejs.org/)** - Official routing library for Vue.js
+
+### Code Quality & Linting
+
+- **[ESLint](https://eslint.org/)** - Pluggable linting utility for JavaScript and TypeScript
+- **[Oxlint](https://oxc.rs/docs/guide/usage/linter.html)** - Fast Rust-based linter for additional validation
+- **[Prettier](https://prettier.io/)** - Opinionated code formatter
+
+### Testing
+
+- **[Vitest](https://vitest.dev/)** - Fast unit testing framework powered by Vite
+- **[Cypress](https://www.cypress.io/)** - End-to-end testing framework
+- **[Vue Test Utils](https://test-utils.vuejs.org/)** - Official testing utilities for Vue components
+- **[jsdom](https://github.com/jsdom/jsdom)** - JavaScript implementation of web standards for Node.js
+
+### Additional Tools
+
+- **[vue-tsc](https://github.com/vuejs/language-tools)** - TypeScript compiler wrapper for Vue SFC type checking
+- **[npm-run-all2](https://github.com/bcomnes/npm-run-all2)** - CLI tool for running multiple npm scripts
+
+## Requirements
+
+- **Node.js**: >=22.12.0
 
 ## Project Setup
+
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Development
+
+### Start Development Server
+
+Run the application with hot-reload for development:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The development server will start at `http://localhost:5173` (or another port if 5173 is in use).
+
+### Type Checking
+
+Run TypeScript type checking:
 
 ```sh
-npm run build
+npm run type-check
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Code Linting & Formatting
+
+Lint and auto-fix code issues:
+
+```sh
+npm run lint
+```
+
+Format code with Prettier:
+
+```sh
+npm run format
+```
+
+## Running Tests
+
+### Unit Tests
+
+Run unit tests with Vitest:
 
 ```sh
 npm run test:unit
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+### End-to-End Tests
+
+Run E2E tests in development mode (with Cypress UI):
 
 ```sh
 npm run test:e2e:dev
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+Run E2E tests against production build (headless):
 
 ```sh
 npm run build
 npm run test:e2e
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Production
+
+### Build for Production
+
+Type-check, compile, and minify for production:
 
 ```sh
-npm run lint
+npm run build
+```
+
+The production-ready files will be generated in the `dist` directory.
+
+### Preview Production Build
+
+Preview the production build locally:
+
+```sh
+npm run preview
 ```
