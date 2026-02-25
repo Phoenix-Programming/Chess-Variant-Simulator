@@ -1,0 +1,4 @@
+# The .gitkeep file is a convention used to keep empty directories in git repositories. It has no content and serves only as a placeholder.
+# This file should be deleted once the directory contains actual files.
+
+# This directory is intended for storing vue components that represent icons. Each icon can be a separate .vue file, and this directory can be used to organize them.
